@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/header.ejs') %>
+    <link rel="stylesheet" type="text/css" href="/style/admin.css">
+    <link rel="stylesheet" type="text/css" href="/style/sidebar.css">
+    <script src="/scripts/js/admin.js"></script>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+            <%- include('./partials/sidebar.ejs') %>
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row mb-5">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                            </div>
+                            <!-- <div class="row">
+                            <div class="col-md-12 fw-bold fs-3">Dashboard</div>
+                        </div> -->
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <!-- <div class="card">
+                                    <div class="card-header">
+                                        Map
+                                    </div>
+                                   
+                                        <canvas class="chart" width="250" height="200"></canvas>
+                                    </div>
+                                </div> -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <Tabls class="col-md-12 fw-bold fs-3">Profile Member
+                                    <button class="btn btn-primary" id="adduser">เพิ่ม</button>
+                            </div>
+
+
+                            <div class="row my-5">
+                                <div class="col-4">
+                                    <div class="card" style="background-color: #343a40;">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <P style="color: white;">900</P>
+                                                    <P style="color: white;">ผู้ใช้ทั้งหมด</P>
+                                                </div>
+                                                <div class="col-4">
+                                                    <i class="fas fa-users mt-2"
+                                                        style="font-size: 40pt ;color: #fff; "></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="card" style="background-color: #343a40;">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <P style="color: white;">900</P>
+                                                    <P style="color: white;">ออนไลน์</P>
+                                                </div>
+                                                <div class="col-4">
+                                                    <i class="fas fa-user mt-2"
+                                                        style="font-size: 40pt ;color: #fff; "></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="card" style="background-color: #343a40;">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <P style="color: white;">900</P>
+                                                    <P style="color: white;">ออฟไลน์</P>
+                                                </div>
+                                                <div class="col-4">
+                                                    <i class="fas fa-user-alt-slash mt-2"
+                                                        style="font-size: 40pt ;color: #fff; "></i>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12">
+                                <!-- table -->
+                                <table class="table table-bordered table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>ลำดับที่</th>
+                                            <th>ชื่อ</th>
+                                            <th>นามสกุล</th>
+                                            <th>อีเมลล์</th>
+                                            <th>เบอร์โทร</th>
+                                            <th>บัตรประชาชน</th>
+                                            <th>ที่อยู่</th>
+                                            <th>ตำบล</th>
+                                            <th>อำเภอ</th>
+                                            <th>จังหวัด</th>
+                                            <th>รหัสไปรษณีย์</th>
+                                            <th>เพศ</th>
+                                            <th>ตำแหน่ง</th>
+                                            <th>แก้ไข</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for( let index=0; index < resule.length; index++ ) { %>
+                                            <tr>
+                                                <td>
+                                                    <%= index+1 %>
+                                                </td>
+                                                <td>
+                                                    <%= resule[index].name %>
+                                                </td>
+                                                <td>
+                                                    <%= resule[index].lastname %>
+                                                </td>
+                                                <td>
+                                                    <%= resule[index].email %>
+                                                </td>
+                                                <td>
+                                                    <%= resule[index].tell %>
+                                                </td>
+                                                <td>
+                                                    <%= resule[index].id_card %>
+                                                </td>
+                                                <td>
+                                                    <%= resule[index].address %>
+                                                </td>
+                                                <td>
+                                                    <%= resule[index].sub %>
+                                                </td>
+                                                <td>
+                                                    <%= resule[index].dist %>
+                                                </td>
+                                                <td>
+                                                    <%= resule[index].prov %>
+                                                </td>
+                                                <td>
+                                                    <%= resule[index].zip %>
+                                                </td>
+                                                <td>
+                                                    <%= resule[index].sex %>
+                                                </td>
+                                                <td>
+                                                    <% if (resule[index].role==1) { %>
+                                                        User
+                                                        <% } else if(resule[index].role==2) { %>
+                                                            Driver
+                                                            <% } else{ %>
+                                                                Admin
+                                                                <% } %>
+                                                </td>
+                                                <td>
+                                                    <!-- <button type="button" class="btn btn-danger btnDelete"
+                                                    blogID="<%= resule[index].driver_id %>">Delete</button> -->
+                                                    <!-- <i class="fas fa-edit"></i> -->
+                                                    <i class="fas fa-edit editbut ml-3"
+                                                        style="font-size:27px; cursor: pointer; align-items: center; color: #1976d2;"
+                                                        blogData="<%= JSON.stringify(resule[index]) %>"></i>
+
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <!-- Modal Add Edit User -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">เพิ่มยูสเซอร์</h5>
+                                            <button type="button" class="close closes" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">รหัสผู้ใช้งาน:</label>
+                                                    <input class="form-control" id="username"></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">รหัสผ่าน:</label>
+                                                    <input class="form-control" id="password"></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">ชื่อ:</label>
+                                                    <input type="text" class="form-control" id="name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">นามสกุล:</label>
+                                                    <input type="text" class="form-control" id="editer">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">อีเมลล์:</label>
+                                                    <input class="form-control" type="email"
+                                                        placeholder="example@mail.com" id="email"></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">เบอร์โทร:</label>
+                                                    <input class="form-control" type="tel" placeholder="08xxxxxxxx"
+                                                        id="tel"></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name"
+                                                        class="col-form-label">เลขบัตรประชาชน:</label>
+                                                    <input type="text" class="form-control" id="card">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">ที่อยู่:</label>
+                                                    <input class="form-control"
+                                                        placeholder="ตัวอย่าง'107 ม.2 บ้านอะไรก็ไม่รู้'"
+                                                        id="address"></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name"
+                                                        class="col-form-label">ตำบล/แขวง:</label>
+                                                    <input type="text" class="form-control" id="sub">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name"
+                                                        class="col-form-label">อำเภอ/เขต:</label>
+                                                    <input type="text" class="form-control" id="dist">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">จังหวัด:</label>
+                                                    <input class="form-control" type="email" placeholder=""
+                                                        id="prov"></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message-text"
+                                                        class="col-form-label">รหัสไปรษณีย์:</label>
+                                                    <input class="form-control" type="tel" placeholder="13156"
+                                                        id="zip"></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="col-form-label">เพศ:</label>
+                                                    <input type="text" class="form-control" id="sex">
+                                                </div>
+                                                <div>
+                                                    <select id="selectrole" class="form-control">
+                                                        <option value="3">แอดมิน</option>
+                                                        <option value="2">คนขับ</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="closes btn btn-secondary"
+                                                data-dismiss="modal">ปิด</button>
+                                            <button type="button" class="btn btn-primary" id="btnModalSave">แอด</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+
+                    <!-- Modal  Delete User
+
+             <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title" id="exampleModalLabel">DELETE USER</h5>
+                         <button type="button" class="close close2" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                         <form>
+                             <p>Are you sure you want to remove this User</p>
+                         </form>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary close2">NO</button>
+                         <button type="button" class="btn btn-danger" id="deletekiki">YES</button>
+                     </div>
+                 </div>
+             </div>
+         </div> -->
+                </div>
+                </div>
+                </div>
+    </body>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script> -->
+
+</html>

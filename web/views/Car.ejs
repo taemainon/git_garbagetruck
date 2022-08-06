@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+    <link rel="stylesheet" type="text/css" href="/style/car.css">
+    <link rel="stylesheet" type="text/css" href="/style/sidebar.css">
+    <script src="/scripts/js/car.js"></script>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+            <%- include('./partials/sidebar.ejs') %>
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-2"></div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <Tabls class="col-md-12 fw-bold fs-3">Car Manage
+                            <button class="btn btn-primary" id="adduser">เพิ่ม</button>
+                    </div>
+
+                    <div class="col-md-12">
+                        <!-- table -->
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ลำดับที่</th>
+                                    <th>ทะเบียนรถ</th>
+                                    <th>ที่นั่ง</th>
+                                    <th>ยี่ห้อรถ</th>
+                                    <th>สีรถ</th>
+                                    <th>แก้ไข</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for( let index=0; index < result.length; index++ ) { %>
+                                    <tr>
+                                        <td>
+                                            <%= index+1 %>
+                                        </td>
+                                        <td>
+                                            <%= result[index].License_plate %>
+                                        </td>
+                                        <td>
+                                            <%= result[index].seat %>
+                                        </td>
+                                        <td>
+                                            <%= result[index].brand %>
+                                        </td>
+                                        <td>
+                                            <%= result[index].color %>
+                                        </td>
+                                        <td>
+                                            <!-- <button type="button" class="btn btn-danger btnDelete"
+                                                blogID="<%= result[index].car_id %>">Delete</button> -->
+                                            <div class="row">
+                                                <div class="col-5"></div>
+                                                <div class="col-7"> <i class="fas fa-edit editbut"
+                                                        style="font-size:27px; cursor: pointer; align-items: center; color: #1976d2;"
+                                                        blogData="<%= JSON.stringify(result[index]) %>"></i></div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Modal Add Edit User -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add user</h5>
+                                    <button type="button" class="close closes" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">License_plate:</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="ตัวอย่าง '1กข-1234 พะเยา' " id="editer">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Seat:</label>
+                                            <input class="form-control" placeholder="" id="seat"></input>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">brand:</label>
+                                            <input class="form-control" placeholder="ตัวอย่าง 'toyota'"
+                                                id="brand"></input>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">color:</label>
+                                            <input class="form-control" placeholder="ตัวอย่าง 'แดง' "
+                                                id="color"></input>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="closes btn btn-secondary"
+                                        data-dismiss="modal">CLOSE</button>
+                                    <button type="button" class="btn btn-primary" id="btnModalSave">add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Modal  Delete User
+
+      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">DELETE USER</h5>
+                  <button type="button" class="close close2" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <p>Are you sure you want to remove this User</p>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary close2">NO</button>
+                  <button type="button" class="btn btn-danger" id="deletekiki">YES</button>
+              </div>
+          </div>
+      </div>
+  </div> -->
+
+
+                </div>
+                </div>
+                <div class="col-2"></div>
+                </div>
+                </div>
+                </div>
+                </div>
+    </body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header.ejs') %>
+
+    <head>
+        <title>Heatmaps</title>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <link rel="stylesheet" type="text/css" href="/style/dashboard.css" />
+        <link rel="stylesheet" type="text/css" href="/style/sidebar.css">
+        <script src="/scripts/js/dashboard.js"></script>
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/highcharts-3d.js"></script>
+
+    </head>
+
+    <body>
+
+        <%- include('./partials/navbar.ejs') %>
+            <%- include('./partials/sidebar.ejs') %>
+                < class="container bootstrap snippet">
+
+                    <div id="container" style="width: 100px; height: 80px; margin: 0 auto"></div>
+                    <div id="sliders"></div>
+                    <div class="content">
+                        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>อีเมลล์ผู้โดยสาร</th>
+                                        <th>เส้นทาง</th>
+                                        <th>วันที่เรียกรถ</th>
+                                        <th>วันที่รับขึ้นรถ</th>
+                                        <th>คนขับรถ</th>
+                                    </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+    </body>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSaaROLQQlFY4xMlTf9plC925bsdnbDGg&callback=initMap&libraries=visualization&v=weekly" async></script>
+    <script language="JavaScript">
+        window.onload = function() {
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                title: {
+                    text: "กราฟเรียกรถ"
+                },
+                axisY: {
+                    title: "จำนวนการเรียกรถ(ครั้ง)"
+                },
+                data: [{
+                    type: "column",
+                    dataPoints: [{
+                        y: 100,
+                        label: "มกราคม"
+                    }, {
+                        y: 150,
+                        label: "กุมภาพันธ์"
+                    }, {
+                        y: 120,
+                        label: "มีนาคม"
+                    }, {
+                        y: 180,
+                        label: "เมษายน"
+                    }, {
+                        y: 90,
+                        label: "พฤษภาคม"
+                    }, {
+                        y: 200,
+                        label: "มิถุนายน"
+                    }, {
+                        y: 123,
+                        label: "กฤกฏาคม"
+                    }, {
+                        y: 185,
+                        label: "สิงหาคม"
+                    }, {
+                        y: 240,
+                        label: "กันยายน"
+                    }, {
+                        y: 210,
+                        label: "ตุลาคม"
+                    }, {
+                        y: 80,
+                        label: "พฤษจิกายน"
+                    }, {
+                        y: 190,
+                        label: "ธันวาคม"
+                    }, ]
+                }]
+            });
+            chart.render();
+
+        }
+    </script>
+
+</html>

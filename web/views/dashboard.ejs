@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header.ejs') %>
+
+    <head>
+        <title>Heatmaps</title>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <link rel="stylesheet" type="text/css" href="/style/dashboard.css" />
+        <link rel="stylesheet" type="text/css" href="/style/sidebar.css">
+        <script src="/scripts/js/dashboard.js"></script>
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/highcharts-3d.js"></script>
+    </head>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+            <%- include('./partials/sidebar.ejs') %>
+                < class="container bootstrap snippet">
+                    <!-- <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="card-statistic-3 p-1">
+                                    <div class="card-icon card-icon-large"><i class="fas fa-shopping-cart"></i></div>
+                                    <div class="mb-10">
+                                        <div id="map" style="width:500px;height:300px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="bg">
+                        <div class="crad-contain">
+                            <div id="map" style="width:800px;height:400px;"></div>
+                        </div>
+                    
+                    </div>
+
+
+
+
+
+
+
+                    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+                    <script
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSaaROLQQlFY4xMlTf9plC925bsdnbDGg&callback=initMap&libraries=visualization&v=weekly"
+                        async></script>
+    </body>
+
+</html>

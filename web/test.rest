@@ -1,0 +1,245 @@
+### student upload
+post http://localhost:35000/loginmoblie
+content-type: application/json
+
+{
+    "username" : "windoss",
+    "password" : 12345
+    
+}
+
+
+
+
+###
+post http://localhost:35000/register
+content-type: application/json
+
+{
+    "username" : "moyanyo",
+    "name" : "suphakorn",
+    "lastname" :"srinak",
+    "password" : "12345",
+    "role" : "1",
+    "id_card" : "1987600854342",
+    "email" : "61022540@up.ac.th",
+    "tell" : "0999999999"
+}
+####
+get http://localhost:35000/carmatch
+content-type: application/json
+
+{ 
+  
+
+}
+
+####
+post http://localhost:35000/get_amphures
+content-type: application/json
+
+{ 
+  "province_id" : "1" 
+
+}
+
+####
+post http://localhost:35000/get_dist
+content-type: application/json
+
+{ 
+  "amphure_id" : "1" 
+
+}
+####
+post http://localhost:35000/get_amphures
+content-type: application/json
+
+{ 
+  "province_id" : "1" 
+
+}
+
+####
+get http://localhost:35000/graph_carmatch_week
+content-type: application/json
+
+{ 
+  
+
+}
+
+####
+post https://pytransit.szo.me/loginmoblie
+content-type: application/json
+
+{ 
+    "username": "windoss",
+    "password": "12345"
+}
+
+####
+get http://localhost:35000/license_plate
+content-type: application/json
+
+{
+    
+}
+
+####
+DELETE  http://localhost:35000/deletecarmatch
+content-type: application/json
+
+{
+    "carmatch" : "8"
+}
+
+####
+post http://localhost:35000/hist
+content-type: application/json
+
+{
+    
+    "driver_id" : "6"
+   
+}
+
+####
+post http://localhost:35000/selectcar
+content-type: application/json
+
+{
+    
+    "carmatch" : "8"
+     
+}
+
+####
+post http://localhost:35000/date
+content-type: application/json
+
+{
+    
+    "carmatch" : "8"
+     
+}
+
+####
+post http://localhost:35000/updatecar
+content-type: application/json
+
+{
+    "License_plate" : "1231",
+    "seat" : "15",
+     "car_id" : "1"
+}
+
+####
+post http://35.185.189.199:35000/matchcar
+content-type: application/json
+
+{
+    "driver_id" : "6",
+    "car_id" : "2"
+}
+
+
+####
+delete http://localhost:35000/deletecar
+content-type: application/json
+
+{
+    "car_id" : "5"
+}
+####
+post http://localhost:35000/query_point
+content-type: application/json
+
+{  
+  "driver_id":"6",
+}
+
+####
+post http://localhost:35000/addlocation
+content-type: application/json
+
+{
+    "carmatch" : "1",
+    "lat" : "192.1111",
+    "lng" : "192.2222" 
+}
+
+####
+post http://localhost:35000/request
+content-type: application/json
+
+{
+    "carmatch" : "1",
+    "lat" : "192.1111",
+    "lng" : "192.2222" 
+}
+
+####
+post http://localhost:35000/selectstar
+content-type: application/json
+
+{
+    "driver_id" : "3",
+    "date" : "2021/07/21"
+}
+
+####
+put http://pytransit.szo.me/setstatus
+content-type: application/json
+
+{
+    "request_id" : "65",
+    "res_driver" : "6"
+}
+
+####
+post http://localhost:35000/review
+content-type: application/json
+
+<<<<<<< HEAD
+{   "driver_id" : "6",
+    "user_email" : "fsafs@gmail.com",
+    "carmatch" : "1",
+    "point" : "5"
+}
+
+####
+
+
+post http://localhost:35000/request
+content-type: application/json
+
+{   "user_email" : "namo",
+    "lat" : "19.032320",
+    "lng" : "99.926732",
+    "status" : "0",
+    "route" : "1"
+}
+
+post http://localhost:35000/request
+content-type: application/json
+
+{   "user_email" : "namo",
+    "lat" : "19.032320",
+    "lng" : "99.926732",
+    "status" : "0",
+    "route" : "1"
+}
+
+####
+post http://localhost:35000/loginadmin
+content-type: application/json
+
+{   
+    "username" : "test",
+    "password" : "test"
+}
+
+
+
+

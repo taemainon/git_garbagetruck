@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/header.ejs') %>
+    <link rel="stylesheet" type="text/css" href="/style/car.css">
+    <link rel="stylesheet" type="text/css" href="/style/sidebar.css">
+    <script src="/scripts/js/match.js"></script>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+            <%- include('./partials/sidebar.ejs') %>
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row mb-5">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mt-5" style="background-color: #343a40;">
+                        <div class="card-body">
+
+                            <canvas id="line-chart" width="30%" height="10%"></canvas>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" id="adduser">เพิ่มรถที่จับคู่</button>
+                    <div class="col-md-12">
+                        <!-- table -->
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>เลขที่</th>
+                                    <th>ชื่อคนขับ</th>
+                                    <th>ทะเบียนรถ</th>
+                                    <th>วันที่</th>
+                                    <th>แก้ไข</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for( let index=0; index < resule.length; index++ ) { %>
+                                    <tr>
+                                        <td>
+                                            <%= index+1 %>
+                                        </td>
+                                        <td>
+                                            <%= resule[index].name %>
+                                                <%= resule[index].lastname %>
+                                        </td>
+                                        <td>
+                                            <%= resule[index].License_plate %>
+                                        </td>
+                                        <td>
+                                            <%= resule[index].date %>
+                                        </td>
+                                        <td>
+
+                                            <!-- <button type="button" class="btn btn-danger btnDelete"
+                                                blogID="<%= resule[index].carmatch %>">Delete</button> -->
+                                            <i class="fas fa-edit editbut ml-3" style="font-size:27px; cursor: pointer; align-items: center; color: #1976d2;" blogData="<%= JSON.stringify(resule[index]) %>"></i>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Modal Add Edit User -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add user</h5>
+                                    <button type="button" class="close closes" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">ชื่อ:</label>
+                                            <input type="text" class="form-control" id="name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">นามสกุล:</label>
+                                            <input type="text" class="form-control" id="lastname">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">ทะเบียนรถ:</label>
+                                            <input class="form-control" placeholder="" id="carplate"></input>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="closes btn btn-secondary" data-dismiss="modal">ปิด</button>
+                                    <button type="button" class="btn btn-primary" id="btnModalSave">เพิ่ม</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal  Delete User -->
+
+                    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">ลบยูสเซอร์</h5>
+                                    <button type="button" class="close close2" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <p>Are you sure you want to remove this User</p>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary close2">ไม่ใช่</button>
+                                    <button type="button" class="btn btn-danger" id="deletekiki">ใช่</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end -->
+                </div>
+                </div>
+                <div class="col-2"></div>
+                </div>
+                </div>
+                </div>
+                </div>
+                <!-- <div style="text-align:center">
+                    <div id="show_time"></div>
+                    <div id="js_preview"></div>
+                    <div id="js_view_local" style="min-height: 200px; height: 334px; width: 668px; margin: 0px auto;">
+                        <iframe scrolling="no" allowtransparency="true" frameborder="0" allowfullscreen="true"
+                            srcdoc="<style>#clock_widget_text {font-family: &quot;Open Sans&quot;,sans-serif;background:;padding: 30px;}#clock_widget_text .cwt_time {font-size: 20vw;text-align: center;font-weight: 600;letter-spacing: 2px;color:#565656;}#clock_widget_text .cwt_header,#clock_widget_text .cwt_header a,#clock_widget_text .cwt_footer {font-size: 3vw; text-align: center;color:#565656;text-decoration: none;}:-webkit-full-screen {background-color:;padding-top: 10%;}:-ms-fullscreen {background-color:;padding-top: 10%;}:fullscreen {background-color:;padding-top: 10%;}#full_screen {position: absolute;top: 25px;right: 25px;}#full_screen div {width: 10px;height: 10px;border: 2px dashed #565656;cursor: pointer;}@media (max-width: 400px) {
+                    #clock_widget_text .cwt_time {font-size: 15vw;}#clock_widget_text .cwt_header, #clock_widget_text .cwt_header a, #clock_widget_text .cwt_footer {font-size: 7vw;}}</style>
+                    <input type=&quot;hidden&quot; id=&quot;js_uid&quot; value=&quot;local&quot;><input type=&quot;hidden&quot; id=&quot;js_language&quot; value=&quot;en&quot;><input type=&quot;hidden&quot; id=&quot;js_tz&quot; value=&quot;Asia/Bangkok&quot;><input type=&quot;hidden&quot; id=&quot;js_width&quot; value=&quot;1001&quot;><div id=&quot;clock_widget_text&quot;><div class=&quot;cwt_header&quot;><a href=&quot;https://logwork.com/clock-widget/&quot; target=&quot;_blank&quot;>, Thailand</a></div><div class=&quot;cwt_time&quot; id=&quot;js_cwt_time&quot;></div><div class=&quot;cwt_footer&quot; id=&quot;js_cwt_footer&quot;></div><div id=&quot;full_screen&quot;><div></div></div></div><script src=&quot;https://web.logwork.com/cores/118/tpl/main/widget/text/js/clock_text.js&quot;></script>"
+                            style="border: transparent; width: 100%; overflow: hidden; height: 636px;"></iframe></div>
+                </div> 
+            style="background-color: #c5c8c9;
+            
+        -->
+
+    </body>
+
+</html>

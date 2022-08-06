@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            PROFILEMEMBER
+        </title>
+        <!-- GOOGLE FONT-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet">
+        <!-- BOXICONS -->
+        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+        <!-- APP CSS -->
+        <link rel="stylesheet" href="/styles/grid.css">
+        <link rel="stylesheet" href="/styles/app.css">
+    </head>
+
+    <body>
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-logo">
+                    <img src="/image/logo.png" alt="logo" style="width:120px;height:80px;">
+                    <ul class="sidebar-close" id="sidebar-close">
+                        <i class='bx bxs-chevrons-left'></i>
+                    </ul>
+                </div>
+                <div class="sidebar-user">
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name">
+                            Garbage-Truck [ADMIN]
+                        </div>
+                    </div>
+                    <button class="btn btn-outline">
+                        <i class='bx bx-log-out bx-rotate-180' style='color:#ffffff'
+                            onclick="window.location.replace('/auth/logout')"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SIDEBAR MENU -->
+            <ul class="sidebar-menu">
+
+                <li>
+                    <a href="/newadminse" class="active">
+                        <i class='bx bxs-contact'></i>
+                        <span>จัดการข้อมูลคนขับรถ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/newcars">
+                        <i class='bx bxs-car'></i>
+                        <span>จัดการข้อมูลรถ</span>
+                    </a>
+                </li>
+                <!-- DROPDOWN -->
+                <li class="sidebar-submenu">
+                    <a href="#" class="sidebar-menu-dropdown">
+                        <i class='bx bx-line-chart'></i>
+                        <span>ดูกราฟ</span>
+                        <div class="dropdown-icon"></div>
+                    </a>
+                    <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                        <li>
+                            <a href="/newcarmatch">
+                                จับคู่รถ
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="sidebar-submenu">
+                    <a href="#" class="sidebar-menu-dropdown">
+                        <i class='bx bxs-wrench'></i>
+                        <span>ตั้งค่า</span>
+                        <div class="dropdown-icon"></div>
+                    </a>
+                    <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                        <li>
+                            <a href="#" class="darkmode-toggle" id="darkmode-toggle">
+                                <span>darkmode</span>
+                                <span class="darkmode-switch"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            <!-- END SIDEBAR MENU-->
+        </div>
+        <!-- END SIDEBAR -->
+
+        <!-- MAIN CONTENT -->
+        <div class="main">
+            <div class="main-header">
+                <div class="mobile-toggle" id="mobile-toggle">
+                    <i class='bx bx-menu-alt-left'></i>
+                </div>
+                <div class="main-tittle">
+                    <h1>ข้อมูลคนขับรถ</h1>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-3 col-md-3 col-sm-12" style="margin-left:48%;">
+                        <div class="box box-hover">
+                            <div class="counter">
+                                <div class="counter-title">
+                                    <h2>ผู้ใช้ทั้งหมด</h2>
+                                </div>
+                                <div class="counter-info">
+                                    <div class="counter-count">
+                                        <%= count[0].num %>
+                                    </div>
+                                    <i class='bx bxs-user-account'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 col-md-3 col-sm-12">
+                        <div class="box box-hover">
+                            <div class="counter">
+                                <div class="counter-title">
+                                    <h2>ผู้ใช้รายใหม่(เดือนนี้)</h2>
+                                </div>
+                                <div class="counter-info">
+                                    <div class="counter-count">
+                                        <%= count1[0].num1 %>
+                                    </div>
+                                    <i class='bx bxs-user-circle'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12">
+                    <div class="box">
+
+                        <button class="button button2" id="adduser">เพิ่ม</button>
+                        <div class="box-body overflow-scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ลำดับที่</th>
+                                        <th>ชื่อ</th>
+                                        <th>นามสกุล</th>
+                                        <th>อีเมลล์</th>
+                                        <th>เบอร์โทร</th>
+                                        <th>บัตรประชาชน</th>
+                                        <th>ที่อยู่</th>
+                                        <th>ตำบล</th>
+                                        <th>อำเภอ</th>
+                                        <th>จังหวัด</th>
+                                        <th>รหัสไปรษณีย์</th>
+                                        <th>เพศ</th>
+
+
+                                        <th>แก้ไข</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for( let index=0; index < resule.length; index++ ) { %>
+                                        <tr>
+                                            <td>
+                                                <%= index+1 %>
+                                            </td>
+                                            <td>
+                                                <%= resule[index].name %>
+                                            </td>
+                                            <td>
+                                                <%= resule[index].lastname %>
+                                            </td>
+                                            <td>
+                                                <%= resule[index].email %>
+                                            </td>
+                                            <td>
+                                                <%= resule[index].tell %>
+                                            </td>
+                                            <td>
+                                                <%= resule[index].id_card %>
+                                            </td>
+                                            <td>
+                                                <%= resule[index].address %>
+                                            </td>
+                                            <td>
+                                                <%= resule[index].sub %>
+                                            </td>
+                                            <td>
+                                                <%= resule[index].dist %>
+                                            </td>
+                                            <td>
+                                                <%= resule[index].prov %>
+                                            </td>
+                                            <td>
+                                                <%= resule[index].zip %>
+                                            </td>
+                                            <td>
+                                                <%= resule[index].sex %>
+                                            </td>
+
+                                            <td>
+                                                <!-- <button type="button" class="btn btn-danger btnDelete"
+                                                blogID="<%= resule[index].driver_id %>">Delete</button> -->
+                                                <!-- <i class="fas fa-edit"></i> -->
+                                                <i class="fas fa-edit editbut ml-3"
+                                                    style="font-size:27px; cursor: pointer; align-items: center; color: #1976d2;"
+                                                    blogData="<%= JSON.stringify(resule[index]) %>"></i>
+
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="box">
+
+                        <div class="box-body overflow-scroll">
+                            <div>
+                                <h3>ประวัติการรีวิว(เดือนนี้)</h3>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ผู้โดยสาร</th>
+                                        <th></th>
+                                        <th>คนขับรถ</th>
+                                        <th>คะแนน</th>
+                                        <th>ข้อเสนอแนะ</th>
+                                        <th>วันที่</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for( let index=0; index < count2.length; index++ ) { %>
+                                        <tr>
+                                            <td>
+                                                <%= count2[index].user_name %>
+                                            </td>
+                                            <td>
+                                                รีวิวให้
+                                                <i class='bx bx-arrow-back bx-rotate-180' style='color:#0aafa8'></i>
+                                            </td>
+                                            <td>
+                                                <%= count2[index].name %>
+                                                    <%= count2[index].lastname %>
+                                            </td>
+                                            <td>
+                                                <%= count2[index].point %>
+                                                    <i class='bx bxs-star' style='color:#ecd713'></i>
+                                            </td>
+                                            <td>
+                                                <%= count2[index].report %>
+                                            </td>
+                                            <td>
+                                                <%= count2[index].rd_date %>
+                                            </td>
+
+                                        </tr>
+                                        <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Add Edit User -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">เพิ่มยูสเซอร์</h5>
+                                <button type="button" class="close closes" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+
+                                <form>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">รหัสผู้ใช้งาน:</label>
+                                        <input class="form-control" id="username"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">รหัสผ่าน:</label>
+                                        <input class="form-control" id="password"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">ชื่อ:</label>
+                                        <input type="text" class="form-control" id="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">นามสกุล:</label>
+                                        <input type="text" class="form-control" id="editer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">อีเมลล์:</label>
+                                        <input class="form-control" type="email" placeholder="example@mail.com"
+                                            id="email"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">เบอร์โทร:</label>
+                                        <input class="form-control" type="tel" placeholder="08xxxxxxxx" id="tel"
+                                            maxlength="10"></input>
+                                        <p id="statusPhone" style="color: red;"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">เลขบัตรประชาชน:</label>
+                                        <input type="text" class="form-control" id="card" maxlength="13">
+                                        <p id="statusCard" style="color: red;"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">ที่อยู่:</label>
+                                        <input class="form-control" placeholder="ตัวอย่าง : 99 ม.9 เพิ่มพูน ซอย9"
+                                            id="address"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">จังหวัด:</label>
+                                        <select name="cars" id="prov">
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">อำเภอ/เขต:</label>
+                                        <select name="cars" id="dist">
+                                            <option value="volvo">เลือกอำเภอ</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">ตำบล/แขวง:</label>
+                                        <select name="cars" id="sub">
+                                            <option value="volvo">เลือกตำบล/แขวง</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">รหัสไปรษณีย์:</label>
+                                        <input class="form-control" type="tel" id="zip"></input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">เพศ:</label>
+                                        <input type="text" class="form-control" id="sex">
+                                    </div>
+                                    <div>
+                                        <select id="selectrole" class="form-control">
+                                            <option value="3">แอดมิน</option>
+                                            <option value="2">คนขับ</option>
+                                        </select>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="closes btn btn-secondary" data-dismiss="modal">ปิด</button>
+                                <button type="submit" class="btn btn-primary" id="btnModalSave">แอด</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- END MAIN CONTENT-->
+
+        <!-- SCRIPT -->
+        <script src="/scripts/js/admin.js"></script>
+        <script src="/scripts/bootstrap.min.js"></script>
+        <!-- APEX CHART -->
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <!--- APP JS -->
+        <script src="/scripts/js/dropdown.js"></script>
+
+    </body>
+
+
+
+</html>

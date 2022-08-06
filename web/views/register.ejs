@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/header.ejs') %>
+
+<body style="background-image: url('/image/digital-art-k-wallpaper.jpg');">
+    <div class="container" >
+        <div class="form-group mt-5">
+
+        <label for="exampleInputEmail1">Username :</label>
+        <input type="text" name="name" id="nameuser" class="form-control" placeholder="name - surname">
+        <br>
+    
+        <label for="exampleInputEmail1">Email :</label>
+        <input type="email" name="email" id="email" class="form-control" placeholder="example@gmail.com">
+        <br>
+        <label for="exampleInputEmail1">Tel :</label>
+        <input type="tel" name="tel" id="telnumber" class="form-control" placeholder="08xxxxxxxx">
+        <br>
+        <button id="submitbutton" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    <script src="/scripts/js/register.js"></script>
+</body>

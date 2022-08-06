@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+    <%- include('./partials/heatmap.ejs') %>
+        <script src="/scripts/js/dashboard.js"></script>
+
+
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>
+                Servies Car Admin
+            </title>
+            <!-- GOOGLE FONT-->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link
+                href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+                rel="stylesheet">
+            <!-- BOXICONS -->
+            <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+            <!-- APP CSS -->
+            <link rel="stylesheet" href="/styles/grid.css">
+            <link rel="stylesheet" href="/styles/app.css">
+        </head>
+
+        <body>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="sidebar-head">
+                    <div class="sidebar-logo">
+                        <img src="/image/logo.png" alt="logo" style="width:120px;height:80px;">
+                        <ul class="sidebar-close" id="sidebar-close">
+                            <i class='bx bxs-chevrons-left'></i>
+                        </ul>
+                    </div>
+                    <div class="sidebar-user">
+                        <div class="sidebar-user-info">
+                            <div class="sidebar-user-name">
+                                Garbage-Truck [ADMIN]
+                            </div>
+                        </div>
+                        <button class="btn btn-outline">
+                            <i class='bx bx-log-out bx-rotate-180' style='color:#ffffff'
+                                onclick="window.location.replace('/auth/logout')"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- SIDEBAR MENU -->
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="/newadminse">
+                            <i class='bx bxs-contact'></i>
+                            <span>จัดการข้อมูลคนขับรถ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/newcars">
+                            <i class='bx bxs-car'></i>
+                            <span>จัดการข้อมูลรถ</span>
+                        </a>
+                    </li>
+                    <!-- DROPDOWN -->
+                    <li class="sidebar-submenu">
+                        <a href="#" class="sidebar-menu-dropdown">
+                            <i class='bx bx-line-chart'></i>
+                            <span>ดูกราฟ</span>
+                            <div class="dropdown-icon"></div>
+                        </a>
+                        <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                            <li>
+                                <a href="/newcarmatch">
+                                    จับคู่รถ
+                                </a>
+                            </li>
+                          
+                        </ul>
+                    </li>
+                    <li class="sidebar-submenu">
+                        <a href="#" class="sidebar-menu-dropdown">
+                            <i class='bx bxs-wrench'></i>
+                            <span>ตั้งค่า</span>
+                            <div class="dropdown-icon"></div>
+                        </a>
+                        <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                            <li>
+                                <a href="#" class="darkmode-toggle" id="darkmode-toggle">
+                                    <span>darkmode</span>
+                                    <span class="darkmode-switch"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <!-- END SIDEBAR MENU-->
+            </div>
+            <!-- END SIDEBAR -->
+
+            <!-- MAIN CONTENT -->
+            <div class="main">
+                <div class="main-header">
+                    <div class="mobile-toggle" id="mobile-toggle">
+                        <i class='bx bx-menu-alt-left'></i>
+                    </div>
+                    <div class="main-tittle">
+                        <h1>สถิติ</h1>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-sm-12" style="height: 425px">
+                            <div id="map" class="border-map" style="height: 100%; width: 100%"></div>
+                        </div>
+                        <div class="col-12 col-md-12 col-sm-12">
+                            <div class="box box-hover">
+                                <div class="counter">
+
+                                    <div class="card-body">
+                                        <div id="chartContainer1" style="height: 350px; width: 100%;"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+
+            <!-- SCRIPT -->
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+            <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+            <!-- APEX CHART -->
+            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+            <!--- APP JS -->
+            <script src="/scripts/js/newdash.js"></script>
+            <script src="/scripts/js/dropdown.js"></script>
+
+
+
+        </body>
+
+</html>

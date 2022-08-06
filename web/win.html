@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html >
+<head>
+   
+    <style>
+      h1{color: blueviolet;
+      font-size: 80px;
+      }
+      h2{color: rgb(18, 149, 209);
+      font-size: 50px;}
+      a{font-size: 80px;}
+      body{
+        background-color: darkcyan;
+      }
+      #HON{
+        color: darksalmon;
+        font-size: 20px;
+      }
+    </style>
+</head>
+
+<body>
+<center> 
+<!-- forms.html -->
+    <h1>PUBLIC TRANSPORT VEHICLE TRACKING SYSTEM OF PHAYAO</h1>
+
+    <h2>แสดงแผนที่รูปภาพ</h2>
+        <a href="https://www.google.co.th/maps">https://www.google.co.th/maps</a>
+       <br> <a href="https://www.google.co.th/maps">แผนที่</a>
+    </form>
+    <p id="HON">แสดงละติจูด ลองติจูด</p>
+  
+<button onclick="getLocation()">Try It</button>
+</center>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+<a href="index.html">หน้าแผนที่</a> 
+
+</body>
+
+</html>

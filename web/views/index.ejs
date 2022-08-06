@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+
+<link rel="stylesheet" type="text/css" href="/style/index.css">
+<link rel="stylesheet" href="file:///E:/fontawesome/css/all.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link rel="stylesheet" type="text/css" href="/style/review.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<!-- <meta http-equiv="refresh" content="30"> -->
+
+<body>
+    <div id="map"></div>
+    <button class="button button1" id="backwelcomepage" value="Logout" style="    top: 10%;
+    right: 1%;">ออก</button>
+
+
+    <div class="popup_box" style="width: 280px; height: 150px;">
+        <div class="row" style="position: fixed; right: 20px; top: 10px;">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="close"
+                style="font-weight: bold;">X</button>
+        </div>
+        <h3>เลือกเส้นทาง</h3>
+        <div class="btns" style="position: fixed; top: 55px; margin-left: 10px;">
+            <a href="#" class="btn1">เข้าเมือง</a>
+            <a href="#" class="btn2">หน้ามอ</a>
+        </div>
+
+
+    </div>
+
+
+
+    <%- include('./partials/map.ejs') %>
+
+        <script src="/scripts/js/index.js"></script>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+
+                <div class="modal-content">
+                    <div class="container">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title" style="font-weight: 600;">ให้คะแนน</h4>
+
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body">
+                            <center>
+                                <div class="rating">
+
+                                    <input type="radio" name="star" id="star1" value="1">
+                                    <label for="star1" class="fa fa-star"></label>
+
+                                    <input type="radio" name="star" id="star2" value="2">
+                                    <label for="star2" class="fa fa-star"></label>
+
+                                    <input type="radio" name="star" id="star3" value="3">
+                                    <label for="star3" class="fa fa-star"></label>
+
+                                    <input type="radio" name="star" id="star4" value="4">
+                                    <label for="star4" class="fa fa-star"></label>
+
+                                    <input type="radio" name="star" id="star5" value="5">
+                                    <label for="star5" class="fa fa-star"></label>
+
+                                </div>
+                                <p style="margin-top: 60px; font-size: 20px; font-weight: 600;" id='ratestatus'></p>
+                                <div>
+
+                                    <textarea class="getdata" placeholder="กดที่นี่เพิ่มข้อเสนอแนะ"
+                                        style="padding-left: 20px;font-size: 18px; width: 200px;"></textarea>
+                                </div>
+                                <div class="btn">
+                                    <button id="sendinfo" class="btn btn-success">ตกลง</button>
+                                </div>
+                        </div>
+                        <div class="modal-footer ">
+
+                        </div>
+                    </div>
+                    <!-- <div class="container">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="star-widget">
+                                <input type="radio" name="rate" id="rate-5">
+                                <label for="rate-5" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate-4">
+                                <label for="rate-4" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate-3">
+                                <label for="rate-3" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate-2">
+                                <label for="rate-2" class="fas fa-star"></label>
+                                <input type="radio" name="rate" id="rate-1">
+                                <label for="rate-1" class="fas fa-star"></label>
+                                <form action="#">
+                                    <header></header>
+                                </form>
+                                <div class="textarea">
+                                    <textarea cols="30" placeholder="เพิ่มข้อเสนอแนะของท่าน"></textarea>
+                                </div>
+                                <div class="btn">
+                                    <button type="submit">ตกลง</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                </center>
+            </div>
+        </div>
+
+</body>
+
+</html>
+
+<script src="/scripts/js/login.js"></script>

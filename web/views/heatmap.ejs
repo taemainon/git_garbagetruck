@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/header.ejs') %>
+
+    <head>
+        <title>Heatmaps</title>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <link rel="stylesheet" type="text/css" href="/style/dashboard.css" />
+        <link rel="stylesheet" type="text/css" href="/style/sidebar.css">
+        <script src="/scripts/js/dashboard.js"></script>
+    </head>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+            <%- include('./partials/sidebar.ejs') %>
+
+
+                <div id="floating-panel">
+                    <button class="btn btn-primary" id="toggle-heatmap">Toggle Heatmap</button>
+                    <button class="btn btn-primary" id="change-gradient">Change Gradient</button>
+                    <button class="btn btn-primary" id="change-radius">Change Radius</button>
+                    <button class="btn btn-primary" id="change-opacity">Change Opacity</button>
+                </div>
+                <div id="map"></div>
+
+                <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSaaROLQQlFY4xMlTf9plC925bsdnbDGg&callback=initMap&libraries=visualization&v=weekly" async></script>
+    </body>
+
+</html>
