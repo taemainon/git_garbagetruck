@@ -125,7 +125,7 @@ class _profileScreenState extends State<profileScreen> {
                 constraints: BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
                 alignment: Alignment.center,
                 child: Text(
-                  "กลับหน้าหลัก",
+                  "<กลับสู่หน้าหลัก",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 26.0,
