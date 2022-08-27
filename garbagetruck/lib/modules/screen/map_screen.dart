@@ -313,7 +313,7 @@ class _MapViewState extends State<MapView> {
         Geolocator.getPositionStream().listen((Position position) async {
       _currentPosition = position;
       // print(message);
-      print('มึงออกมาดิ' + driverid);
+      debugPrint('ฮัลโลออกมา' + driverid);
       var text = jsonEncode({
         "topic": driverid.toString(),
         "lat": position.latitude,

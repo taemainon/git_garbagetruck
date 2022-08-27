@@ -19,6 +19,20 @@ import 'package:get_storage/get_storage.dart';
 
 import '../../responsive.dart';
 
+import 'package:geolocator/geolocator.dart';
+
+final LocationSettings locationSettings = LocationSettings(
+  accuracy: LocationAccuracy.high,
+  distanceFilter: 100,
+);
+StreamSubscription<Position> positionStream =
+    Geolocator.getPositionStream(locationSettings: locationSettings)
+        .listen((Position? position) {
+  debugPrint(position == null
+      ? 'Unknown'
+      : '${position.latitude.toString()}, ${position.longitude.toString()}');
+});
+
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
   @override
