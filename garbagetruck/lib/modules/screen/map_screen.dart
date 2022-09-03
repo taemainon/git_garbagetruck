@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:garbagetruck/modules/screen/history_screen.dart';
 import 'package:garbagetruck/modules/screen/login_screen.dart';
 import 'package:garbagetruck/modules/screen/profile.dart';
+import 'package:garbagetruck/modules/screen/weigh_screen.dart';
+import 'package:garbagetruck/modules/widgets/show_icon_button.dart';
 import 'package:garbagetruck/modules/widgets/show_title.dart';
 import 'package:garbagetruck/secrets.dart';
 import 'package:garbagetruck/utillity/my_constant.dart';
@@ -114,6 +116,7 @@ class _MapViewState extends State<MapView> {
             ),
           ),
           backgroundColor: MyConstant.dark,
+          actions: [],
         ),
         body: Stack(
           children: <Widget>[
@@ -130,11 +133,10 @@ class _MapViewState extends State<MapView> {
   /*ฟังก์ชั่นการทำงาน*/
   SafeArea trackingbutton(double width, double height) {
     return SafeArea(
-      child: Align(
-        alignment: Alignment.bottomRight,
-        child: Padding(
-          padding: EdgeInsets.only(
-              right: width * (5 / 100), bottom: height * (3 / 100)),
+        child: Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.fromLTRB(325, 500, 0, 0),
           child: ClipOval(
             child: Material(
               color: Colors.orange[100], // button color
@@ -142,7 +144,7 @@ class _MapViewState extends State<MapView> {
                   splashColor: Colors.orange, // inkwell color
                   child: CircleAvatar(
                     backgroundColor: Colors.orange[200],
-                    radius: 35,
+                    radius: 30,
                     child: track_button
                         ? Icon(
                             Icons.explore,
@@ -162,8 +164,31 @@ class _MapViewState extends State<MapView> {
             ),
           ),
         ),
-      ),
-    );
+        Padding(
+          padding: EdgeInsets.fromLTRB(325, 4, 0, 0),
+          child: ClipOval(
+            child: Material(
+              color: Colors.green, // button color
+              child: InkWell(
+                  splashColor: Colors.green.shade100, // inkwell color
+                  child: CircleAvatar(
+                      backgroundColor: Colors.green[200],
+                      radius: 30,
+                      child: Icon(
+                        Icons.add_chart,
+                        color: Colors.black,
+                      )),
+                  onTap: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => WeighScreen()));
+                    //
+                    // );
+                  }),
+            ),
+          ),
+        ),
+      ],
+    ));
   }
 
   SafeArea zoombutton(double width, double height) {
