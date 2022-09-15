@@ -16,7 +16,6 @@ import 'package:garbagetruck/utillity/my_constant.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_storage/get_storage.dart';
-
 import '../../responsive.dart';
 
 import 'package:geolocator/geolocator.dart';
@@ -179,7 +178,7 @@ class _loginState extends State<login> {
       children: [
         Container(
           margin: EdgeInsets.only(top: height * 0.05),
-          width: width * 0.6,
+          width: width * 0.5,
           child: ElevatedButton(
             child: Text("Login"),
             style: MyConstant().MyButtonStlye2(),
@@ -217,7 +216,7 @@ class _loginState extends State<login> {
     // for (var i in _count) {
 
     // }
-    _manager.subScribeTo("moyanyo61022540");
+    _manager.subScribeTo("moyanyo");
     // print("car" + _driverid + _carid);
 
     MaterialPageRoute route =

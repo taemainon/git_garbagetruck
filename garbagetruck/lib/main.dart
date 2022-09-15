@@ -10,6 +10,8 @@ import 'modules/helpers/screen_route.dart';
 import 'modules/helpers/service_locator.dart';
 import 'modules/screen/login_screen.dart';
 import 'modules/screen/map_screen.dart';
+import 'modules/screen/weigh_screen.dart';
+//import 'modules/widgets/show_icon_button.dart';
 
 void main() {
   setupLocator();
@@ -46,6 +48,7 @@ class MyApp extends StatelessWidget {
             '/map': (BuildContext context) => MapScreen(),
             '/profile': (BuildContext context) => profileScreen(),
             '/hist': (BuildContext context) => historyScreen(),
+            '/weigh': (BuildContext context) => WeighScreen(),
             //'/test': (BuildContext context) => test(),
           }),
     );
