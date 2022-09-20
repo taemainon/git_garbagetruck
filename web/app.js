@@ -117,22 +117,22 @@ app.post('/loginmoblie', function(req, res) {
             
             res.send(result)
 
-            // if (numrows != 1) {
-            //     res.status(401).send('เข้าสู่ระบบไม่สำเร็จ')
-            // } else {
-            //     bcrypt.compare(password, result[0].password, function(err, resp) {
-            //         if (err) {
-            //             console.log(err)
-            //             res.status(503).send('การรับรองเซิร์ฟเวอร์ผิดพลาด')
-            //         } else if (resp == true) {
-            //             console.log(result)
-            //             res.send(result)
-            //         } else {
-            //             //wrong password
-            //             res.status(403).send('รหัสไม่ถูกต้อง')
-            //         }
-            //     })
-            // }
+        // //     if (numrows != 1) {
+        // //        res.status(401).send('เข้าสู่ระบบไม่สำเร็จ')
+        // //    } else {
+        // //         bcrypt.compare(password, result[0].password, function(err, resp) {
+        // //             if (err) {
+        // //                 console.log(err)
+        // //                 res.status(503).send('การรับรองเซิร์ฟเวอร์ผิดพลาด')
+        // //             } else if (resp == true) {
+        // //                 console.log(result)
+        // //                 res.send(result)
+        // //             } else {
+        // //                 //wrong password
+        // //                 res.status(403).send('รหัสไม่ถูกต้อง')
+        // //             }
+        // //         })
+        //     }
         }
     })
 })
@@ -246,7 +246,7 @@ app.post('/request', (req, res) => {
             console.log(err)
             res.status(503).send('Server error')
         } else {
-            console.log(result.insertId)
+            //console.log(result.insertId)
             let num = result.insertId.toString()
             con.query(sql1, [user_email, user_name], (err, result) => {
                 if (err) {
@@ -372,7 +372,7 @@ app.post('/loginadmin', (req, res) => {
             if (err) {
                 res.send(err)
             } else if (result.length > 0) {
-                console.log(result)
+                //console.log(result)
                 const payload = {
                     email: 'user',
                     photo: 'user',
@@ -494,7 +494,7 @@ wss.on('connection', function connection(ws) {
         // const uniKeys = [...(new Set(carMarker))];
         //console.log(message.toString());
 
-        console.log(yourString)
+        //console.log(yourString)
         ws.send(JSON.stringify(yourString))
             // client.end()
     })

@@ -145,7 +145,7 @@ router.post("/adminse/new", function (req, res) {
                 const numrows1 = result.length;
                 //if repeated username
                 if (numrows1 > 0) {
-                    res.status(400).send("ขออภัย, เบอรืโทรศัพท์นี้ถูกใช้งานแล้ว");
+                    res.status(400).send("ขออภัย, เบอร์โทรศัพท์นี้ถูกใช้งานแล้ว");
                 } else {
 
                     let sql2 = "SELECT driver_id FROM driver WHERE email=?  ";

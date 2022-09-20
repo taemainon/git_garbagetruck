@@ -110,7 +110,7 @@ app.get('/verify', (req, res) => {
             res.status(400).send('Invalid token');
         } else {
             // OK, decoding is done
-            console.log(decoded)
+            //console.log(decoded)
             res.send(decoded);
         }
     });
@@ -136,7 +136,7 @@ app.post("/loginmoblie", function(req, res) {
             } else {
                 bcrypt.compare(password, result[0].password, function(err, resp) {
                     if (err) {
-                        console.log(err);
+                        //console.log(err);
                         res.status(503).send("การรับรองเซิร์ฟเวอร์ผิดพลาด");
 
                     } else if (resp == true) {
