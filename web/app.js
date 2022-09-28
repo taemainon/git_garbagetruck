@@ -115,24 +115,22 @@ app.post('/loginmoblie', function(req, res) {
         } else {
             const numrows = result.length
             
-            res.send(result)
-
-        // //     if (numrows != 1) {
-        // //        res.status(401).send('เข้าสู่ระบบไม่สำเร็จ')
-        // //    } else {
-        // //         bcrypt.compare(password, result[0].password, function(err, resp) {
-        // //             if (err) {
-        // //                 console.log(err)
-        // //                 res.status(503).send('การรับรองเซิร์ฟเวอร์ผิดพลาด')
-        // //             } else if (resp == true) {
-        // //                 console.log(result)
-        // //                 res.send(result)
-        // //             } else {
-        // //                 //wrong password
-        // //                 res.status(403).send('รหัสไม่ถูกต้อง')
-        // //             }
-        // //         })
-        //     }
+             if (numrows != 1) {
+               res.status(401).send('เข้าสู่ระบบไม่สำเร็จ')
+            } else {
+                 bcrypt.compare(password, result[0].password, function(err, resp) {
+               if (err) {
+                       console.log(err)
+                         res.status(503).send('การรับรองเซิร์ฟเวอร์ผิดพลาด')
+                     } else if (resp == true) {
+                         console.log(result)
+                        res.send(result)
+                     } else {
+                        //wrong password
+                        res.status(403).send('รหัสไม่ถูกต้อง')
+                    }
+                 })
+      }
         }
     })
 })
