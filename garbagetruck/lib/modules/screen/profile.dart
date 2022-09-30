@@ -175,9 +175,9 @@ class _profileScreenState extends State<profileScreen> {
               height: 10.0,
             ),
             Text(
-              'ชื่อ $name\n'
-              'เบอร์โทรศัพท์ $tell\n'
-              'E-mail $email\n'
+              'ชื่อ: $name\n'
+              'เบอร์โทรศัพท์: $tell\n'
+              'E-mail: $email\n'
               '$adrs\n'
               '$adrs1\n'
               '$adrs2\n'
@@ -200,9 +200,9 @@ class _profileScreenState extends State<profileScreen> {
               ),
             ),
             Text(
-              'เลขทะเบียนรถ $plateId\n'
-              'ความจุที่นั่ง $seat ที่นั่ง รุ่นรถ $brand \n'
-              'สี $_color \n',
+              'เลขทะเบียนรถ: $plateId \n'
+              'รุ่นรถ: $brand \n'
+              'สี: $_color \n',
               style: TextStyle(
                 fontSize: 22.0,
                 fontStyle: FontStyle.normal,
@@ -251,7 +251,7 @@ class _profileScreenState extends State<profileScreen> {
     try {
       http.Response response =
           await http.post(Uri.parse('http://10.0.2.2:35000/date'), body: {
-        // await http.post(Uri.parse('http://pytransit.szo.me/date'), body: 
+        // await http.post(Uri.parse('http://pytransit.szo.me/date'), body:
         'carmatch': id,
       }).timeout(Duration(seconds: 4));
       final _date = jsonDecode(response.body);

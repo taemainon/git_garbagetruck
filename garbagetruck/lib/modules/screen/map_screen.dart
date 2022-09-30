@@ -334,11 +334,10 @@ class _MapViewState extends State<MapView> {
   }
 
   void _updatelocation() {
-    sendLocation =
-        Geolocator.getPositionStream().listen((Position position) async {
+    sendLocation = Geolocator.getPositionStream().listen((Position position) async {
       _currentPosition = position;
       // print(message);
-      debugPrint('ฮัลโลออกมา' + driverid);
+        // debugPrint('ฮัลโลออกมา:' + driverid);
       var text = jsonEncode({
         "topic": driverid.toString(),
         "lat": position.latitude,
@@ -346,8 +345,8 @@ class _MapViewState extends State<MapView> {
       });
       _manager.publish(text);
 
-      print(position);
-      print("\n\n\n\n\n\n\n\n\n\n");
+      // print(position);
+      // print("\n\n\n\n\n\n\n\n\n\n");
 
       // _publishMessage(":lat:" +
       //     position.latitude.toString() +
@@ -368,25 +367,25 @@ class _MapViewState extends State<MapView> {
           var _check = response.body;
 
           if (response.statusCode == 200) {
-            print('Upload to database $_currentPosition');
+            // print('Upload to database $_currentPosition');
             countingtin = 0;
           } else {
             final snackBar = SnackBar(
               duration: Duration(seconds: 2),
-              content: Text('Server error'),
+              content: Text('Server Error'),
             );
             // Find the ScaffoldMessenger in the widget tree
             // and use it to show a SnackBar.
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         } on TimeoutException catch (e) {
-          print('Timeout : $e ');
+          // print('Timeout : $e ');
         } catch (e) {
-          print('ERROR : $e ');
+          // print('ERROR : $e ');
         }
       } else {
-        print('CURRENT LOCATION $_currentPosition');
-        print('counting $countingtin');
+        // print('CURRENT LOCATION $_currentPosition');
+        // print('counting $countingtin');
         countingtin++;
       }
     });
