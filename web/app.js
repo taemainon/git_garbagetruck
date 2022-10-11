@@ -105,15 +105,18 @@ app.get('/verify', (req, res) => {
 app.post('/loginmoblie', function(req, res) {
     const username = req.body.username
     const password = req.body.password
+    console.log('======== login =======')
 
     const sql =
-        'SELECT * FROM driver WHERE driver.username =? AND role=2;'
-
+        'SELECT driver.*, car_match.carmatch, car_match.car_id FROM driver left join car_match on driver.driver_id = car_match.driver_id WHERE driver.username =? AND role=2 order by car_match.date desc limit 1 ;'
+        console.log('======== 1 =======')
+        console.log({username})
     con.query(sql, [username], function(err, result, fields) {
         if (err) {
             res.status(500).send('เซิร์ฟเวอร์ไม่ตอบสนอง')
         } else {
             const numrows = result.length
+    console.log(numrows)
             
              if (numrows != 1) {
                res.status(401).send('เข้าสู่ระบบไม่สำเร็จ')
@@ -205,7 +208,7 @@ app.put('/res_date', (req, res) => {
 
 app.post('/addlocation', (req, res) => {
     const { carmatch, lat, lng } = req.body
-        //console.log(req.body)
+            console.log(req.body)
     const sql = 'INSERT INTO location(carmatch, lat, lng) VALUES (?,?,?)'
     con.query(sql, [carmatch, lat, lng], (err, result) => {
         if (err) {
@@ -411,6 +414,21 @@ app.put('/forgotpwd', (req, res) => {
         }
     })
 })
+app.get('/weight', (req, res) => {
+    const sql = 
+        'select b.type, a.date , SUM(a.weight) from trash a left join car b on a.car_id = b.car_id group by b.type, CAST(a.date AS DATE)'
+        console.log('+==================================+')
+    con.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            res.status(503).send('ผิดพลาดอิอิ')
+        } else {
+            res.status(200).send(result)
+        }
+    })
+})
+
+
 
 // client.on('connect', function() {
 //     client.subscribe('moyanyo', function(err) {
@@ -496,4 +514,24 @@ wss.on('connection', function connection(ws) {
         ws.send(JSON.stringify(yourString))
             // client.end()
     })
+})
+
+
+app.post('/save-weight', (req, res) => {
+    const { weight, car_id } = req.body
+    const date = Date.now();
+    console.log({date})
+    const sql =
+        'INSERT INTO  trash( weight, car_id,date) VALUES (?,?,CURRENT_TIMESTAMP())'
+    con.query(
+        sql, [weight, car_id],
+        (err, result) => {
+            if (err) {
+                console.log(err)
+                res.status(503).send('Server error')
+            } else {
+                res.status(200).send('reviewsuccessed')
+            }
+        },
+    )
 })

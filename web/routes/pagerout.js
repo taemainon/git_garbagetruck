@@ -45,5 +45,9 @@ router.get('/mapping', (req, res) => {
     res.render('index')
 })
 
+router.get('/cartbl', (req, res) => {
+    res.render('cartable')
+})
+
 
 module.exports = router

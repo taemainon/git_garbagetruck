@@ -113,4 +113,49 @@ router.get("/license_plate", (req, res) => {
     });
 })
 
+router.get("/showweigh", (req, res) => {
+    const sql = "SELECT b.type, DATE_FORMAT(a.date,'%Y-%m-%d') as date , SUM(a.weight) from trash a left join car b on a.car_id = b.car_id group by b.type, CAST(a.date AS DATE)";
+    con.query(sql, function(err, result, fields) {
+        if (err) {
+            console.error(err.message);
+            res.status(503).send("Database error2");
+            return;
+        } else {
+            res.render('showweigh', { result: result })
+        }
+    });
+})
+
+router.get("/statisticweigh", (req, res) => {
+    const sql = "SELECT b.type, DATE_FORMAT(a.date,'%Y-%m-%d') as date , SUM(a.weight) from trash a left join car b on a.car_id = b.car_id group by b.type, CAST(a.date AS DATE)";
+    con.query(sql, function(err, result, fields) {
+        if (err) {
+            console.error(err.message);
+            res.status(503).send("Database error3");
+            return;
+        } else {
+            res.render('showweigh', { result: result })
+        }
+    });
+})
+
+
+
+
 module.exports = router;
+
+
+
+
+router.get("/newcarmatch", checkUser, (req, res) => {
+    const sql = "SELECT * FROM car_match,driver,car WHERE DATE(date)=DATE(CURRENT_TIMESTAMP) AND car_match.driver_id =driver.driver_id AND car_match.car_id = car.car_id ORDER BY date DESC";
+    con.query(sql, function(err, result, fields) {
+        if (err) {
+            console.error(err.message);
+            res.status(503).send("Database error");
+            return;
+        } else {
+            res.render('newmatch', { resule: result })
+        }
+    });
+})

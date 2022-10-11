@@ -11,6 +11,11 @@ $(document).ready(function() {
     $('#backwelcomepage').click(function() {
         window.location.href = '/'
     })
+   
+    $('#cartable').click(function() {
+        window.location.href = '/cartbl'
+    })
+
     $('#login').click(function() {
         var username = document.getElementById('admin-username').value
         var password = document.getElementById('admin-password').value

@@ -6,11 +6,11 @@ const checkUser = require('./middleware');
 
 
 router.get("/showweigh", checkUser, (req, res) => {
-    const sql = "SELECT MONTH(`req_date`)as _month,COUNT(`request_id`)as num FROM `user_request`WHERE YEAR(`req_date`)= YEAR(CURRENT_TIMESTAMP) GROUP BY MONTH(`req_date`)"
+    const sql = "SELECT b.type, a.date , SUM(a.weight) from trash a left join car b on a.car_id = b.car_id group by b.type, CAST(a.date AS DATE)"
     con.query(sql, function(err, result, fields) {
         if (err) {
             console.error(err.message);
-            res.status(503).send("Database error");
+            res.status(503).send("Database error1");
             return;
         } else {
             res.render('showweigh', { resule: result })
