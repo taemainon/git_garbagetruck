@@ -294,13 +294,13 @@ function checksendrequest() {
             },
         })
     } else {
-        var x = document.getElementById('review')
-        var y = document.getElementById('eiei')
+        // var x = document.getElementById('review')
+        // var y = document.getElementById('eiei')
         sessionStorage.removeItem('lat')
         sessionStorage.removeItem('lng')
             //setmarker()
-        y.style.display = 'block'
-        x.style.display = 'none'
+        // y.style.display = 'block'
+        // x.style.display = 'none'
     }
 }
 
@@ -364,17 +364,22 @@ function initMap() {
         //     id: 1
         // });
 
-    //console.log(dataCar)
+    console.log(dataCar)
     var myMarkers = new Array()
     $.ajax({
         type: 'GET',
         url: '/carmatch',
         success: function(response) {
+            console.log(response)
             for (let index = 0; index < response.length; index++) {
+                
                 myMarkers[index] = addMarker(
                     map,
                     response[index].info,
                     response[index].type,
+                    response[index].lat,
+                    response[index].lng,
+
                 )
             }
         },
@@ -386,34 +391,36 @@ function initMap() {
         },
     })
 
-    function addMarker(map, info, type) {
+    function addMarker(map, info, type, latNew, lngNew) {
+        console.log("รูปมาบ่");
         //create the markers
         const infowindow = new google.maps.InfoWindow({
             content: info,
         })
+
         if (type == 1) {
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
+                position: new google.maps.LatLng(latNew, lngNew),
                 map: map,
                 icon: greeen,
             })
         } else if (type == 2) {
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
+                position: new google.maps.LatLng(latNew, lngNew),
                 map: map,
                 icon: blue,
             })
         } else if (type == 3) {
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
+                position: new google.maps.LatLng(latNew, lngNew),
                 map: map,
                 icon: yelow,
             })
         } else {
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
+                position: new google.maps.LatLng(latNew, lngNew),
                 map: map,
-                icon: red,
+                icon: red ,
             })
         }
 
@@ -434,7 +441,7 @@ function initMap() {
         var index = dataCar.findIndex(
                 (std) => JSON.stringify(std.driver_id) === obj.topic,
             )
-            //console.log(index)
+            // console.log(index)
         var latlng = new google.maps.LatLng(obj.lat, obj.lng)
         myMarkers[index].setPosition(latlng)
         if (obj.status == '0') {
@@ -457,14 +464,14 @@ function initMap() {
                     const pos = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
-                    }
+                    };
                     myMarker = new google.maps.Marker({
                             position: pos,
                             map: map,
                         })
-                        // infoWindow.setPosition(pos);
-                        // infoWindow.setContent("Location found.");
-                        // infoWindow.open(map);
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent('Location found. lat: ' + position.coords.latitude + ', lng: ' + position.coords.longitude + ' ');
+                        infoWindow.open(map);
                 },
                 () => {
                     handleLocationError(true, infoWindow, map.getCenter())
@@ -490,22 +497,22 @@ function initMap() {
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {
     var waypts = []
 
-    stop = new google.maps.LatLng(19.161438, 99.913639)
+    stop = new google.maps.LatLng(19.0275033, 99.922485)
     waypts.push({
         location: stop,
         stopover: true,
     })
-    stop = new google.maps.LatLng(19.168859, 99.903858)
+    stop = new google.maps.LatLng(19.0281170, 99.9280268)
     waypts.push({
         location: stop,
         stopover: true,
     })
-    stop = new google.maps.LatLng(19.172269, 99.898099)
+    stop = new google.maps.LatLng(19.0280917, 99.9280152)
     waypts.push({
         location: stop,
         stopover: true,
     })
-    stop = new google.maps.LatLng(19.170169, 99.897192)
+    stop = new google.maps.LatLng(19.0280960, 99.9280153)
     waypts.push({
         location: stop,
         stopover: true,
@@ -513,8 +520,8 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 
     directionsService
         .route({
-            origin: '19.030976, 99.926385',
-            destination: '19.030976, 99.926385',
+            origin: '19.0285386, 99.9280334',
+            destination: '19.0285386, 99.9280334',
             travelMode: google.maps.TravelMode.DRIVING,
             waypoints: waypts,
         })

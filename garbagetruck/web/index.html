@@ -62,7 +62,7 @@
             function waitForActivation(serviceWorker) {
               serviceWorker.addEventListener('statechange', () => {
                 if (serviceWorker.state == 'activated') {
-                  console.log('Installed new service worker.');
+                  //console.log('Installed new service worker.');
                   loadMainDartJs();
                 }
               });
@@ -74,12 +74,12 @@
             } else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
               // When the app updates the serviceWorkerVersion changes, so we
               // need to ask the service worker to update.
-              console.log('New service worker available.');
+              //console.log('New service worker available.');
               reg.update();
               waitForActivation(reg.installing);
             } else {
               // Existing service worker is still good.
-              console.log('Loading app from service worker.');
+              //console.log('Loading app from service worker.');
               loadMainDartJs();
             }
           });

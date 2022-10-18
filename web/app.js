@@ -352,7 +352,9 @@ app.post('/hist', function(req, res) {
 
 app.get('/carmatch', (req, res) => {
     const sql =
-        'SELECT * FROM car_match LEFT JOIN car on car_match.car_id = car.car_id where DATE(date)=DATE(CURRENT_TIMESTAMP())'
+        `SELECT * FROM car_match LEFT JOIN car on car_match.car_id = car.car_id 
+        LEFT join location on car_match.carmatch = location.carmatch where DATE(date)=DATE(CURRENT_TIMESTAMP())
+        order by location.timestamp desc limit 1`
     con.query(sql, (err, result) => {
         if (err) {
             console.log(err)

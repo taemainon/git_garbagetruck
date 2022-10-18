@@ -35,7 +35,17 @@ $(document).ready(function () {
                         fill: false,
                         hoverBackgroundColor: "rgba(232,105,90,0.8)",
                         hoverBorderColor: "orange",
-                    }]
+                    },
+                    // {
+                    //     data: [50 , 25 ,0,30],
+                    //     label: "lsada",
+                    //     borderColor: "#fff000",
+                    //     labelColor: "#fff",
+                    //     fill: false,
+                    //     hoverBackgroundColor: "rgba(232,105,90,0.8)",
+                    //     hoverBorderColor: "orange",
+                    // }
+                ]
                 },
                 options: {
                     responsive: true,
@@ -50,7 +60,6 @@ $(document).ready(function () {
                                 fontColor: "white",
                                 // fontSize: 18,
                                 // stepSize: 1,
-
 
                             }
                         }],

@@ -96,7 +96,7 @@ class MQTTManager extends ChangeNotifier {
     // print('EXAMPLE::OnDisconnected client callback - Client disconnection');
     if (_client!.connectionStatus!.returnCode ==
         MqttConnectReturnCode.noneSpecified) {
-      print('EXAMPLE::OnDisconnected callback is solicited, this is correct');
+      //print('EXAMPLE::OnDisconnected callback is solicited, this is correct');
     }
     _currentState.clearText();
     _currentState.setAppConnectionState(MQTTAppConnectionState.disconnected);
@@ -115,10 +115,9 @@ class MQTTManager extends ChangeNotifier {
       _currentState.setReceivedText(pt);
       updateState();
       // print(
-          // 'EXAMPLE::Change notification:: topic is <${c[0].topic}>, payload is <-- $pt -->');
+      // 'EXAMPLE::Change notification:: topic is <${c[0].topic}>, payload is <-- $pt -->');
       // print('');
     });
-   
   }
 
   void subScribeTo(String topic) {

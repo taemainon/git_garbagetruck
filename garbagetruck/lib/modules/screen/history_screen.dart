@@ -187,9 +187,9 @@ class _historyScreenState extends State<historyScreen> {
       //print('namo' + "${date["DATE_FORMAT(str_date,'%Y-%m-%d')"]}");
       // box.write('_date', "${date["DATE_FORMAT(str_date,'%Y-%m-%d')"]}");
     } on TimeoutException catch (e) {
-      print('suphakorn: $e ');
+      // print('suphakorn: $e ');
     } catch (e) {
-      print('srinak : $e ');
+      // print('srinak : $e ');
     }
     // setState(() {
 

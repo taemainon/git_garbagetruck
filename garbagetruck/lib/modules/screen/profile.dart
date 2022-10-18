@@ -238,9 +238,9 @@ class _profileScreenState extends State<profileScreen> {
       });
       //print('titok' + "${car['License_plate']}");
     } on TimeoutException catch (e) {
-      print('Timeout : $e ');
+      // print('Timeout : $e ');
     } catch (e) {
-      print('ERROR : $e ');
+      // print('ERROR : $e ');
     }
   }
 
@@ -260,9 +260,9 @@ class _profileScreenState extends State<profileScreen> {
       //print('namo' + "${date["DATE_FORMAT(str_date,'%Y-%m-%d')"]}");
       box.write('_date', "${date["DATE_FORMAT(str_date,'%Y-%m-%d')"]}");
     } on TimeoutException catch (e) {
-      print('suphakorn: $e ');
+      // print('suphakorn: $e ');
     } catch (e) {
-      print('srinak : $e ');
+      // print('srinak : $e ');
     }
     setState(() {
       id = box.read('carmatchid').toString();

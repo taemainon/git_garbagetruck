@@ -52,7 +52,7 @@ class _MapViewState extends State<MapView> {
   late String carid = '';
   late Timer _timer;
   double? lat, lng;
-  //bool _picture = true;
+  // bool _picture = true;
   late GoogleMapController mapController;
   late double p = 0;
   int countingtin = 0;
@@ -65,11 +65,12 @@ class _MapViewState extends State<MapView> {
   final destinationAddressController = TextEditingController();
   final startAddressFocusNode = FocusNode();
   final desrinationAddressFocusNode = FocusNode();
-  double _originLatitude = 19.031459, _originLongitude = 99.926547;
-  double _destLatitude = 19.172379, _destLongitude = 99.898241;
-  double _onwaylat = 19.161715, _onwaylng = 99.913415;
-  double _originLatitude1 = 19.172379, _originLongitude1 = 99.898241;
-  double _destLatitude1 = 19.031459, _destLongitude1 = 99.926547;
+  double _originLatitude = 19.0285386, _originLongitude = 99.9280334;
+  double _destLatitude = 19.0275033, _destLongitude = 99.922485;
+  double _onwaylat = 19.0281170, _onwaylng = 99.9280268;
+  double _originLatitude1 = 19.0280917, _originLongitude1 = 99.9280152;
+  double _destLatitude1 = 19.0280988, _destLongitude1 = 99.9280153;
+
   PolylinePoints polylinePoints = PolylinePoints();
   Map<PolylineId, Polyline> polylines = {};
   List<Marker> _marker = [];
@@ -292,8 +293,8 @@ class _MapViewState extends State<MapView> {
         polylineCoordinates1.add(LatLng(point.latitude, point.longitude));
       });
     } else {
-      print('err_poly ${result.errorMessage}');
-      print('err_poly1 ${result1.errorMessage}');
+      // print('err_poly ${result.errorMessage}');
+      // print('err_poly1 ${result1.errorMessage}');
     }
     _addPolyLine(polylineCoordinates);
     _addPolyLine1(polylineCoordinates1);
@@ -334,10 +335,11 @@ class _MapViewState extends State<MapView> {
   }
 
   void _updatelocation() {
-    sendLocation = Geolocator.getPositionStream().listen((Position position) async {
+    sendLocation =
+        Geolocator.getPositionStream().listen((Position position) async {
       _currentPosition = position;
       // print(message);
-        // debugPrint('ฮัลโลออกมา:' + driverid);
+      // debugPrint('ฮัลโลออกมา:' + driverid);
       var text = jsonEncode({
         "topic": driverid.toString(),
         "lat": position.latitude,
@@ -618,9 +620,9 @@ class _MapViewState extends State<MapView> {
       box.write('point', "$p");
       //print('data_point : $p');
     } on TimeoutException catch (e) {
-      print('Timeout : $e ');
+      // print('Timeout : $e ');
     } catch (e) {
-      print('ERROR : $e ');
+      // print('ERROR : $e ');
     }
   }
 

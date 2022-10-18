@@ -22,8 +22,8 @@ class _WeighScreenState extends State<WeighScreen> {
   var _counter = 0;
 
   // final _url = Uri.parse('http://pytransit.szo.me/loginmoblie');
-  final _url = Uri.parse('http://10.0.2.2:35000/weigh');
-  final TextEditingController _getweigh = TextEditingController();
+  final _url = Uri.parse('http://10.0.2.2:35000/weight');
+  final TextEditingController _get = TextEditingController();
 
   bool isSaving = false;
   int int_count = 0;
@@ -45,8 +45,10 @@ class _WeighScreenState extends State<WeighScreen> {
       setState(() {
         isSaving = true;
       });
-
-      await Future.delayed(Duration(seconds: 1));
+      final box = GetStorage();
+      String carId = box.read('cid').toString();
+      await _weigh(int_count, carId);
+      // await Future.delayed(Duration(seconds: 1));
 
       setState(() {
         isSaving = false;
@@ -62,8 +64,7 @@ class _WeighScreenState extends State<WeighScreen> {
             fontSize: 16.0);
       });
     }
-    final box = GetStorage();
-    String car_id = box.read('cid').toString();
+
     // int_count
     // print('car_id: $car_id');
   }
@@ -74,7 +75,7 @@ class _WeighScreenState extends State<WeighScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         centerTitle: true,
         // toolbarHeight: height * (5 / 100) + 20,
@@ -97,7 +98,7 @@ class _WeighScreenState extends State<WeighScreen> {
         backgroundColor: MyConstant.dark,
       ),
       body: Container(
-        color: Colors.white,
+        color: Color.fromARGB(255, 202, 227, 231),
         padding:
             const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 50),
         child: Center(
@@ -106,7 +107,15 @@ class _WeighScreenState extends State<WeighScreen> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text('$int_count',
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.w600)),
+                  style: TextStyle(
+                      fontSize: 50,
+                      fontWeight: FontWeight.w600,
+                      //backgroundColor: Color.fromARGB(255, 229, 229, 156)
+                      background: Paint()
+                        ..strokeWidth = 40.0
+                        ..color = Color.fromARGB(255, 220, 228, 144)
+                        ..style = PaintingStyle.stroke
+                        ..strokeJoin = StrokeJoin.round)),
               SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -218,8 +227,19 @@ class _WeighScreenState extends State<WeighScreen> {
     );
   }
 
-  Future _weigh() async {
-    int weigh;
-    weigh = _getweigh.value as int;
+  Future _weigh(weight, car_id) async {
+    var headers = {'Content-Type': 'application/x-www-form-urlencoded'};
+    var request =
+        http.Request('POST', Uri.parse('http://10.0.2.2:35000/save-weight'));
+    request.bodyFields = {'weight': weight.toString(), 'car_id': car_id.toString()};
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    } else {
+      print(response.reasonPhrase);
+    }
   }
 }

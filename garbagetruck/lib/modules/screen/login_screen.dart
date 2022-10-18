@@ -240,12 +240,12 @@ class _loginState extends State<login> {
         'password': password,
       }).timeout(Duration(seconds: 4));
       var _check = response.body;
-      print(_check);
+      // print(_check);
 
       if (response.statusCode == 200 && _check.isNotEmpty) {
         final _driver = jsonDecode(response.body);
         final driver = _driver[0];
-        print(driver);
+        // print(driver);
 
         box.write('carmatchid', "${driver['carmatch']}");
         box.write('name', "${driver['name']} ${driver['lastname']}");
@@ -274,9 +274,9 @@ class _loginState extends State<login> {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     } on TimeoutException catch (e) {
-      print('Timeout : $e ');
+      // print('Timeout : $e ');
     } catch (e) {
-      print('ERROR : $e ');
+      // print('ERROR : $e ');
     }
   }
 }

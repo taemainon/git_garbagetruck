@@ -134,6 +134,7 @@ app.post("/loginmoblie", function(req, res) {
             if (numrows != 1) {
                 res.status(401).send("เข้าสู่ระบบไม่สำเร็จ");
             } else {
+                console.log (result)
                 bcrypt.compare(password, result[0].password, function(err, resp) {
                     if (err) {
                         //console.log(err);
