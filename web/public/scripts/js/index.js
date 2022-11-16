@@ -350,7 +350,11 @@ function initMap() {
         suppressMarkers: true,
     })
     const map = new google.maps.Map(document.getElementById('map'), {})
-
+    directionsRenderer.setOptions({
+        polylineOptions: {
+          strokeColor: 'red'
+        }
+      });
     directionsRenderer.setMap(map)
     calculateAndDisplayRoute(directionsService, directionsRenderer)
     var greeen = '/image/carGreen.png'
@@ -434,6 +438,8 @@ function initMap() {
         return marker
     }
 
+    
+
     connection.onmessage = function(e) {
         var obj = JSON.parse(e.data)
         console.log(obj.topic)
@@ -497,22 +503,22 @@ function initMap() {
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {
     var waypts = []
 
-    stop = new google.maps.LatLng(19.0275033, 99.922485)
+    stop = new google.maps.LatLng(18.812643552168534, 98.9634971726769)
     waypts.push({
         location: stop,
         stopover: true,
     })
-    stop = new google.maps.LatLng(19.0281170, 99.9280268)
+    stop = new google.maps.LatLng(18.80739298292453, 98.96275688295454)
     waypts.push({
         location: stop,
         stopover: true,
     })
-    stop = new google.maps.LatLng(19.0280917, 99.9280152)
+    stop = new google.maps.LatLng(18.80250787676687, 98.96731663819125)
     waypts.push({
         location: stop,
         stopover: true,
     })
-    stop = new google.maps.LatLng(19.0280960, 99.9280153)
+    stop = new google.maps.LatLng(18.80716955079214, 98.97095371365731)
     waypts.push({
         location: stop,
         stopover: true,
@@ -520,10 +526,11 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 
     directionsService
         .route({
-            origin: '19.0285386, 99.9280334',
-            destination: '19.0285386, 99.9280334',
+            origin: '18.811556890783976, 98.96801401258992',
+            destination: '18.811556890783976, 98.96801401258992',
             travelMode: google.maps.TravelMode.DRIVING,
             waypoints: waypts,
+          
         })
         .then((response) => {
             directionsRenderer.setDirections(response)

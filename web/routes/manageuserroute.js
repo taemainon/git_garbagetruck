@@ -107,7 +107,7 @@ router.post("/adminse/new", function (req, res) {
     const password = req.body.password;
     const name = req.body.name;
     const lastname = req.body.lastname;
-    const email = req.body.email;
+    // const email = req.body.email;
     const tell = req.body.tell;
     const id_card = req.body.id_card;
     const address = req.body.address;
@@ -148,19 +148,19 @@ router.post("/adminse/new", function (req, res) {
                     res.status(400).send("ขออภัย, เบอร์โทรศัพท์นี้ถูกใช้งานแล้ว");
                 } else {
 
-                    let sql2 = "SELECT driver_id FROM driver WHERE email=?  ";
-                    con.query(sql2, [email], function (err, result, fields) {
-                        if (err) {
-                            console.error(err.message);
-                            res.status(500).send("Database server error");
-                            return;
-                        }
+                    // let sql2 = "SELECT driver_id FROM driver WHERE email=?  ";
+                    // con.query(sql2, [email], function (err, result, fields) {
+                    //     if (err) {
+                    //         console.error(err.message);
+                    //         res.status(500).send("Database server error");
+                    //         return;
+                    //     }
 
-                        const numrows2 = result.length;
-                        //if repeated username
-                        if (numrows2 > 0) {
-                            res.status(400).send("ขออภัย, อีเมลล์นี้ถูกใช้งานแล้ว");
-                        } else {
+                    //     const numrows2 = result.length;
+                    //     //if repeated username
+                    //     if (numrows2 > 0) {
+                    //         res.status(400).send("ขออภัย, อีเมลล์นี้ถูกใช้งานแล้ว");
+                    //     } else {
 
                             let sql3 = "SELECT driver_id FROM driver WHERE id_card=?  ";
                             con.query(sql3, [id_card], function (err, result, fields) {
@@ -177,8 +177,8 @@ router.post("/adminse/new", function (req, res) {
                                 } else {
                                     bcrypt.hash(password, 10, function (err, hash) {
                                         //return hashed password, 60 characters
-                                        sql = "INSERT INTO driver(username,password,name,lastname,email,tell,id_card,address,sub,dist,prov,zip,sex,role)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                                        con.query(sql, [username, hash, name, lastname, email, tell, id_card, address, sub, dist, prov, zip, sex, role], function (err, result, fields) {
+                                        sql = "INSERT INTO driver(username,password,name,lastname,tell,id_card,address,sub,dist,prov,zip,sex,role)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                        con.query(sql, [username, hash, name, lastname, tell, id_card, address, sub, dist, prov, zip, sex, role], function (err, result, fields) {
                                             if (err) {
                                                 console.error(err.message);
                                                 res.status(500).send("Database server error");
@@ -197,8 +197,8 @@ router.post("/adminse/new", function (req, res) {
                             });
 
 
-                        }
-                    });
+                        // }
+                    // });
 
 
                 }
@@ -213,7 +213,7 @@ router.put('/adminse/edit', checkUser, (req, res) => {
     const password = req.body.password;
     const name = req.body.name;
     const lastname = req.body.lastname;
-    const email = req.body.email;
+    // const email = req.body.email;
     const tell = req.body.tell;
     const id_card = req.body.id_card;
     const address = req.body.address;
@@ -258,19 +258,19 @@ router.put('/adminse/edit', checkUser, (req, res) => {
                     res.status(400).send("ขออภัย, เบอร์โทรศัพท์นี้ถูกใช้งานแล้ว");
                 } else {
 
-                    let sql2 = "SELECT driver_id FROM driver WHERE email=? AND driver_id !=? ";
-                    con.query(sql2, [email,driver_id], function (err, result, fields) {
-                        if (err) {
-                            console.error(err.message);
-                            res.status(500).send("Database server error");
-                            return;
-                        }
+                    // let sql2 = "SELECT driver_id FROM driver WHERE email=? AND driver_id !=? ";
+                    // con.query(sql2, [email,driver_id], function (err, result, fields) {
+                    //     if (err) {
+                    //         console.error(err.message);
+                    //         res.status(500).send("Database server error");
+                    //         return;
+                    //     }
 
-                        const numrows2 = result.length;
-                        //if repeated username
-                        if (numrows2 > 0) {
-                            res.status(400).send("ขออภัย, อีเมลล์นี้ถูกใช้งานแล้ว");
-                        } else {
+                    //     const numrows2 = result.length;
+                    //     //if repeated username
+                    //     if (numrows2 > 0) {
+                    //         res.status(400).send("ขออภัย, อีเมลล์นี้ถูกใช้งานแล้ว");
+                    //     } else {
 
                             let sql3 = "SELECT driver_id FROM driver WHERE id_card=? AND driver_id !=? ";
                             con.query(sql3, [id_card,driver_id], function (err, result, fields) {
@@ -287,8 +287,8 @@ router.put('/adminse/edit', checkUser, (req, res) => {
                                 } else {
                                     bcrypt.hash(password, 10, function (err, hash) {
                                         //return hashed password, 60 characters
-                                        sql = "UPDATE driver SET username=?,password=?,name=?,lastname=?,email=?,tell=?,id_card=?,address=?,sub=?,dist=?,prov=?,zip=?,sex=?,role=? WHERE driver_id=?";
-                                        con.query(sql, [username, hash, name, lastname, email, tell, id_card, address, sub, dist, prov, zip, sex, role, driver_id], function (err, result, fields) {
+                                        sql = "UPDATE driver SET username=?,password=?,name=?,lastname=?,tell=?,id_card=?,address=?,sub=?,dist=?,prov=?,zip=?,sex=?,role=? WHERE driver_id=?";
+                                        con.query(sql, [username, hash, name, lastname, tell, id_card, address, sub, dist, prov, zip, sex, role, driver_id], function (err, result, fields) {
                                             if (err) {
                                                 console.error(err.message);
                                                 res.status(500).send("Database server error");
@@ -307,8 +307,8 @@ router.put('/adminse/edit', checkUser, (req, res) => {
                             });
 
 
-                        }
-                    });
+                        // }
+                    // });
 
 
                 }

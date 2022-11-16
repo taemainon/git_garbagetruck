@@ -1,248 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
+  <%- include('./partials/header.ejs') %>
 
-<%- include('./partials/header.ejs') %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Servies Car Admin</title>
+    <!-- GOOGLE FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- BOXICONS -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- APP CSS -->
+    <link rel="stylesheet" href="/styles/grid.css" />
+    <link rel="stylesheet" href="/styles/app.css" />
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            Servies Car Admin
-        </title>
-        <!-- GOOGLE FONT-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <!-- BOXICONS -->
-        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-        <!-- APP CSS -->
-        <link rel="stylesheet" href="/styles/grid.css">
-        <link rel="stylesheet" href="/styles/app.css">
-
-    </head>
-
-    <body>
-
-        <!-- SIDEBAR -->
-        <div class="sidebar">
-            <div class="sidebar-head">
-                <div class="sidebar-logo">
-                    <img src="/image/logo.png" alt="logo" style="width:120px;height:80px;">
-                    <ul class="sidebar-close" id="sidebar-close">
-                        <i class='bx bxs-chevrons-left'></i>
-                    </ul>
-                </div>
-                <div class="sidebar-user">
-                    <div class="sidebar-user-info">
-                        <div class="sidebar-user-name">
-                            Garbage-Truck [ADMIN]
-                        </div>
-                    </div>
-                    <button class="btn btn-outline">
-                        <i class='bx bx-log-out bx-rotate-180' style='color:#ffffff'
-                            onclick="window.location.replace('/auth/logout')"></i>
-                    </button>
-                </div>
-            </div>
-            <!-- SIDEBAR MENU -->
-            <ul class="sidebar-menu">
-
-                <li>
-                    <a href="/newadminse">
-                        <i class='bx bxs-contact'></i>
-                        <span>จัดการข้อมูลคนขับรถ</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/newcars">
-                        <i class='bx bxs-car'></i>
-                        <span>จัดการข้อมูลรถ</span>
-                    </a>
-                </li>
-                <!-- DROPDOWN -->
-                <li class="sidebar-submenu">
-                    <a href="#" class="sidebar-menu-dropdown">
-                        <i class='bx bx-line-chart'></i>
-                        <span>ดูกราฟ</span>
-                        <div class="dropdown-icon"></div>
-                    </a>
-                    <ul class="sidebar-menu sidebar-menu-dropdown-content">
-                        <li>
-                            <a href="/newcarmatch" class="active">
-                                จับคู่รถ
-                            </a>
-                            <a href="/showweigh">
-                                รายงานสถิติการเก็บขยะ
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-                <li class="sidebar-submenu">
-                    <a href="#" class="sidebar-menu-dropdown">
-                        <i class='bx bxs-wrench'></i>
-                        <span>ตั้งค่า</span>
-                        <div class="dropdown-icon"></div>
-                    </a>
-                    <ul class="sidebar-menu sidebar-menu-dropdown-content">
-                        <li>
-                            <a href="#" class="darkmode-toggle" id="darkmode-toggle">
-                                <span>darkmode</span>
-                                <span class="darkmode-switch"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-            </ul>
-            <!-- END SIDEBAR MENU-->
+  <body>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-head">
+        <div class="sidebar-logo">
+          <img
+            src="/image/logo.png"
+            alt="logo"
+            style="width: 120px; height: 80px"
+          />
+          <ul class="sidebar-close" id="sidebar-close">
+            <i class="bx bxs-chevrons-left"></i>
+          </ul>
         </div>
-        <!-- END SIDEBAR -->
+        <div class="sidebar-user">
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Garbage-Truck [ADMIN]</div>
+          </div>
+          <button class="btn btn-outline">
+            <i
+              class="bx bx-log-out bx-rotate-180"
+              style="color: #ffffff"
+              onclick="window.location.replace('/auth/logout')"
+            ></i>
+          </button>
+        </div>
+      </div>
+      <!-- SIDEBAR MENU -->
+      <ul class="sidebar-menu">
+        <li>
+          <a href="/newadminse">
+            <i class="bx bxs-contact"></i>
+            <span>จัดการข้อมูลคนขับรถ</span>
+          </a>
+        </li>
+        <li>
+          <a href="/newcars">
+            <i class="bx bxs-car"></i>
+            <span>จัดการข้อมูลรถ</span>
+          </a>
+        </li>
+        <!-- DROPDOWN -->
+        <li class="sidebar-submenu">
+          <a href="#" class="sidebar-menu-dropdown">
+            <i class="bx bx-line-chart"></i>
+            <span>ดูกราฟ</span>
+            <div class="dropdown-icon"></div>
+          </a>
+          <ul class="sidebar-menu sidebar-menu-dropdown-content">
+            <li>
+              <a href="/newcarmatch" class="active"> จับคู่รถ </a>
+              <a href="/showweigh"> รายงานสถิติการเก็บขยะ </a>
+            </li>
+          </ul>
+        </li>
+        <li class="sidebar-submenu">
+          <a href="#" class="sidebar-menu-dropdown">
+            <i class="bx bxs-wrench"></i>
+            <span>ตั้งค่า</span>
+            <div class="dropdown-icon"></div>
+          </a>
+          <ul class="sidebar-menu sidebar-menu-dropdown-content">
+            <li>
+              <a href="#" class="darkmode-toggle" id="darkmode-toggle">
+                <span>darkmode</span>
+                <span class="darkmode-switch"></span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- END SIDEBAR MENU-->
+    </div>
+    <!-- END SIDEBAR -->
 
-        <!-- MAIN CONTENT -->
-        <div class="main">
-            <div class="main-header">
-                <div class="mobile-toggle" id="mobile-toggle">
-                    <i class='bx bx-menu-alt-left'></i>
-                </div>
-                <div class="main-tittle">
-                    <h1>การจับคู่รถ</h1>
-                </div>
+    <!-- MAIN CONTENT -->
+    <div class="main">
+      <div class="main-header">
+        <div class="mobile-toggle" id="mobile-toggle">
+          <i class="bx bx-menu-alt-left"></i>
+        </div>
+        <div class="main-tittle">
+          <h1>สถิติการจับคู่รถ</h1>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="col-12 col-md-12 col-sm-12">
+          <div class="counter">
+            <div class="card" style="background-color: #343a40">
+              <div class="card-body">
+                <canvas id="line-chart" width="30%" height="10%"></canvas>
+              </div>
             </div>
-            <div class="main-content">
-                <div class="col-12 col-md-12 col-sm-12">
-                    <div class="counter">
-                        <div class="card" style="background-color: #343a40;">
-                            <div class="card-body">
-                                <canvas id="line-chart" width="30%" height="10%"></canvas>
-                            </div>
-                        </div>
+          </div>
+        </div>
 
-                    </div>
-                </div>
+        <div class="col-12">
+          <!-- TABLE -->
+          <div class="box">
+            <h3>ตารางการจับคู่รายวัน <br /></h3>
+            <button class="button button2" id="adduser">
+              เพิ่มรถที่จับคู่
+            </button>
 
-                <div class="col-12">
-                    <!-- TABLE -->
-                    <div class="box">
-                        <h3>ตารางการจับคู่รายวัน <br></h3>
-                        <button class="button button2" id="adduser">เพิ่มรถที่จับคู่</button>
-
-                        <div class="box-body overflow-scroll">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>เลขที่</th>
-                                        <th>ชื่อคนขับ</th>
-                                        <th>ทะเบียนรถ</th>
-                                        <th>วันที่</th>
-                                        <th>แก้ไข</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% for( let index=0; index < resule.length; index++ ) { %>
-                                        <tr>
-                                            <td>
-                                                <%= index+1 %>
-                                            </td>
-                                            <td>
-                                                <%= resule[index].name %>
-                                                    <%= resule[index].lastname %>
-                                            </td>
-                                            <td>
-                                                <%= resule[index].License_plate %>
-                                            </td>
-                                            <td>
-                                                <%= resule[index].date %>
-                                            </td>
-                                            <td>
-
-                                                <!-- <button type="button" class="btn btn-danger btnDelete"
+            <div class="box-body overflow-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>เลขที่</th>
+                    <th>ชื่อคนขับ</th>
+                    <th>ทะเบียนรถ</th>
+                    <th>วันที่</th>
+                    <th>แก้ไข</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for( let index=0; index < resule.length; index++ ) { %>
+                  <tr>
+                    <td><%= index+1 %></td>
+                    <td>
+                      <%= resule[index].name %> <%= resule[index].lastname %>
+                    </td>
+                    <td><%= resule[index].License_plate %></td>
+                    <td><%= resule[index].date %></td>
+                    <td>
+                      <!-- <button type="button" class="btn btn-danger btnDelete"
                                                     blogID="<%= resule[index].carmatch %>">Delete</button> -->
-                                                <i class="fas fa-edit editbut ml-3" style="font-size:27px; cursor: pointer; align-items: center; color: #1976d2;" blogData="<%= JSON.stringify(resule[index]) %>"></i>
-                                            </td>
-                                        </tr>
-                                        <% } %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- END TABLE -->
-                </div>
-                <!-- Modal Add Edit User -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add user</h5>
-                                <button type="button" class="close closes" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">ชื่อ:</label>
-                                        <input type="text" class="form-control" id="name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">นามสกุล:</label>
-                                        <input type="text" class="form-control" id="lastname">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="message-text" class="col-form-label">ทะเบียนรถ:</label>
-                                        <input class="form-control" placeholder="" id="carplate"></input>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="closes btn btn-secondary" data-dismiss="modal">ปิด</button>
-                                <button type="button" class="btn btn-primary" id="btnModalSave">เพิ่ม</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal  Delete User -->
-
-                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">ลบยูสเซอร์</h5>
-                                <button type="button" class="close close2" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <p>Are you sure you want to remove this User</p>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary close2">ไม่ใช่</button>
-                                <button type="button" class="btn btn-danger" id="deletekiki">ใช่</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- end -->
-
-
+                      <i
+                        class="fas fa-edit editbut ml-3"
+                        style="
+                          font-size: 27px;
+                          cursor: pointer;
+                          align-items: center;
+                          color: #1976d2;
+                        "
+                        blogData="<%= JSON.stringify(resule[index]) %>"
+                        onclick="editFindDataToForm('<%= resule[index].carmatch %>')"
+                      ></i>
+                    </td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
             </div>
+          </div>
+          <!-- END TABLE -->
         </div>
-        <!-- END MAIN CONTENT-->
 
-        <!-- SCRIPT -->
-        <script src="/scripts/js/match.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-        <!-- APEX CHART -->
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        <!--- APP JS -->
-        <script src="/scripts/js/dropdown.js"></script>
+        <!-- Modal Add Edit User -->
 
+        <div
+          class="modal"
+          tabindex="-1"
+          role="dialog"
+          id="exampleModal"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">จับคู่รถ</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1"
+                      >ชื่อ และ นามสกุลคนขับรถ</label
+                    >
+                    <select class="form-control" id="driverid"></select>
+                  </div>
 
-    </body>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect2"
+                      >หมายเลขทะเบียน</label
+                    >
+                    <select class="form-control" id="carplate"></select>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  onclick="addDataToDB()"
+                >
+                  บันทึก
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary closes"
+                  data-dismiss="modal"
+                >
+                  ปิด
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <div
+          class="modal fade"
+          id="exampleModal2"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ลบยูสเซอร์</h5>
+                <button
+                  type="button"
+                  class="close close2"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <p>คุณต้องการจะลบหรือไม่</p>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close2">
+                  ไม่ใช่
+                </button>
+                <button type="button" class="btn btn-danger" id="deletekiki">
+                  ใช่
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- end -->
+      </div>
+    </div>
+    <!-- END MAIN CONTENT-->
+
+    <!-- SCRIPT -->
+    <script src="/scripts/js/match.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <!-- APEX CHART -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!--- APP JS -->
+    <script src="/scripts/js/dropdown.js"></script>
+
+    <script>
+      $(function () {
+        $("#modal").modal("toggle");
+
+        //****Get Name and Lastname*****//
+        $.ajax({
+          type: "GET",
+          url: "/namelastname",
+          success: function (response) {
+            options = ``;
+
+            response.forEach((value) => {
+              options += `<option value="${value.driver_id}">${value.name} ${value.lastname}</option>`;
+            });
+
+            $("#driverid").html(options);
+          },
+        });
+        //****Get Name and Lastname*****//
+
+        // ***** Get License Plate to Select Option
+        $.ajax({
+          type: "GET",
+          url: "/license_plate",
+          success: function (response) {
+            options = ``;
+
+            response.forEach((value) => {
+              options += `<option value="${value.car_id}">${value.License_plate}  |  ประเภท : ${value.type}</option>`;
+            });
+
+            $("#carplate").html(options);
+          },
+        });
+        // ***** Get License Plate to Select Option
+      });
+
+      function addDataToDB() {
+        var value = {
+          driver_id: document.getElementById("driverid").value,
+          car_id: document.getElementById("carplate").value,
+        };
+
+        $.ajax({
+          type: "POST",
+          url: "/addcarmatch",
+          data: value,
+          success: function (response) {
+            if (response.message == "success") {
+              document.getElementById("driverid").value = "";
+              document.getElementById("carplate").value = "";
+              $("#exampleModal").modal("hide");
+              location.reload();
+            }
+          },
+        });
+      }
+
+      function editFindDataToForm(match_id) {
+        $.ajax({
+          type: "POST",
+          url: "/findCarMatchById",
+          data: {
+            match_id: match_id
+          },
+          success: function (response) {
+            if (response.result.length > 0) {
+              document.getElementById("driverid").value = response.result[0].driver_id;
+              document.getElementById("carplate").value = response.result[0].car_id;
+            }
+          },
+        });
+      }
+    </script>
+  </body>
 </html>

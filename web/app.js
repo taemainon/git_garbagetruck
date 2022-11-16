@@ -64,12 +64,12 @@ app.use('/image', express.static(path.join(__dirname, 'image')))
 
 app.post('/signUp', function(req, res) {
     const username = req.body.username
-    const email = req.body.email
+    //const email = req.body.email
     const tel = req.body.tel
     const role = req.body.role
 
-    const sql = 'INSERT INTO user(name, email, role,tel) VALUES(?,?,?,?)'
-    con.query(sql, [username, email, role, tel], function(err, result, fields) {
+    const sql = 'INSERT INTO user(name, role,tel) VALUES(?,?,?)'
+    con.query(sql, [username, role, tel], function(err, result, fields) {
         if (err) {
             console.error(err.message)
             res.status(503).send('Database error')
@@ -418,7 +418,7 @@ app.put('/forgotpwd', (req, res) => {
 })
 app.get('/weight', (req, res) => {
     const sql = 
-        'select b.type, a.date , SUM(a.weight) from trash a left join car b on a.car_id = b.car_id group by b.type, CAST(a.date AS DATE)'
+        'select b.type, a.date , SUM(a.weight) , weigh_id from trash a left join car b on a.car_id = b.car_id group by b.type, CAST(a.date AS DATE)'
         console.log('+==================================+')
     con.query(sql, (err, result) => {
         if (err) {

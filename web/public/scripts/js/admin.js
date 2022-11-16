@@ -40,6 +40,19 @@ $(document).ready(function () {
     }
     var ele = document.getElementById('card')
     var ele1 = document.getElementById('tel')
+    
+    console.log($('#password').val())
+    console.log($('#password2').val())
+    var ele2 = document.getElementById('password')
+    var ele3 = document.getElementById('password2')
+    if(ele2.value != ele3.value) {
+      document.getElementById('statusPassword').innerHTML = 'กรุณากรอกรหัสผ่านให้ตรง'
+      return;
+    } else {
+      document.getElementById('statusPassword').innerHTML = ''
+
+    }
+   
 
     if (ele1.value.length != 10 && ele.value.length != 13) {
       // alert('กรุณากรอกเลขบัตรให้ครบ 13 หลัก')
@@ -121,7 +134,7 @@ $(document).ready(function () {
     $('#password').val('')
     $('#name').val('')
     $('#editer').val('')
-    $('#email').val('')
+   // $('#email').val('')
     $('#tel').val('')
     $('#card').val('')
     $('#address').val('')
@@ -152,7 +165,7 @@ $(document).ready(function () {
     $('#username').val(postData.username)
     $('#name').val(postData.name)
     $('#editer').val(postData.lastname)
-    $('#email').val(postData.email)
+    //$('#email').val(postData.email)
     $('#tel').val(postData.tell)
     $('#card').val(postData.id_card)
     $('#address').val(postData.address)

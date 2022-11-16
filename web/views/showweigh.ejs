@@ -1,186 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
+  <%- include('./partials/header.ejs') %>
 
-<%- include('./partials/header.ejs') %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weigh</title>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            Weigh
-        </title>
+    <!-- GOOGLE FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- BOXICONS -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- APP CSS -->
+    <link rel="stylesheet" href="/styles/grid.css" />
+    <link rel="stylesheet" href="/styles/app.css" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css.css"
+    /> -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"
+    />
+  </head>
 
-        <!-- GOOGLE FONT-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-            rel="stylesheet">
-        <!-- BOXICONS -->
-        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-        <!-- APP CSS -->
-        <link rel="stylesheet" href="/styles/grid.css">
-        <link rel="stylesheet" href="/styles/app.css">
-
-    </head>
-
-    <body>
-        <script src="/scripts/js/reqdata.js"></script>
-        <!-- <script src="/scripts/js/dropdown.js"></script> -->
-        <!-- SIDEBAR -->
-        <div class="sidebar">
-            <div class="sidebar-head">
-                <div class="sidebar-logo">
-                    <img src="/image/logo.png" alt="logo" style="width:120px;height:80px;">
-                    <ul class="sidebar-close" id="sidebar-close">
-                        <i class='bx bxs-chevrons-left'></i>
-                    </ul>
-                </div>
-                <div class="sidebar-user">
-                    <div class="sidebar-user-info">
-                        <div class="sidebar-user-name">
-                            Garbage-Truck [ADMIN]
-                        </div>
-                    </div>
-                    <button class="btn btn-outline">
-                        <i class='bx bx-log-out bx-rotate-180' style='color:#ffffff'
-                            onclick="window.location.replace('/auth/logout')"></i>
-                    </button>
-                </div>
-            </div>
-            <!-- SIDEBAR MENU -->
-            <ul class="sidebar-menu">
-
-                <li>
-                    <a href="/newadminse">
-                        <i class='bx bxs-contact'></i>
-                        <span>จัดการข้อมูลคนขับรถ</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/newcars">
-                        <i class='bx bxs-car'></i>
-                        <span>จัดการข้อมูลรถ</span>
-                    </a>
-                </li>
-                <!-- DROPDOWN -->
-                <li class="sidebar-submenu">
-                    <a href="#" class="sidebar-menu-dropdown">
-                        <i class='bx bx-line-chart'></i>
-                        <span>ดูกราฟ</span>
-                        <div class="dropdown-icon"></div>
-                    </a>
-                    <ul class="sidebar-menu sidebar-menu-dropdown-content">
-                        <li>
-                            <a href="/newcarmatch">
-                                จับคู่รถ
-                            </a>
-                            <a href="/showweigh">
-                                รายงานสถิติการเก็บขยะ
-                            </a>
-                        </li>
-                       
-                    </ul>
-                </li>
-                <li class="sidebar-submenu">
-                    <a href="#" class="sidebar-menu-dropdown">
-                        <i class='bx bxs-wrench'></i>
-                        <span>ตั้งค่า</span>
-                        <div class="dropdown-icon"></div>
-                    </a>
-                    <ul class="sidebar-menu sidebar-menu-dropdown-content">
-                        <li>
-                            <a href="#" class="darkmode-toggle" id="darkmode-toggle">
-                                <span>darkmode</span>
-                                <span class="darkmode-switch"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-            </ul>
-            <!-- END SIDEBAR MENU-->
+  <body>
+    <script src="/scripts/js/reqdata.js"></script>
+    <!-- <script src="/scripts/js/dropdown.js"></script> -->
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-head">
+        <div class="sidebar-logo">
+          <img
+            src="/image/logo.png"
+            alt="logo"
+            style="width: 120px; height: 80px"
+          />
+          <ul class="sidebar-close" id="sidebar-close">
+            <i class="bx bxs-chevrons-left"></i>
+          </ul>
         </div>
-        <!-- END SIDEBAR -->
-
-        <!-- MAIN CONTENT -->
-        <div class="main">
-            <div class="main-header">
-                <div class="mobile-toggle" id="mobile-toggle">
-                    <i class='bx bx-menu-alt-left'></i>
-                </div>
-                <div class="main-tittle">
-                    <h1>ข้อมูลสถิติขยะ</h1>
-                </div>
-            </div>
-            <div class="main-content">
-                <div class="col-12 col-md-12 col-sm-12">
-                    <div class="counter">
-                        <div class="card" style="background-color: #969e9f;">
-                            <div class="card-body">
-                                <canvas id="line-chart" width="30%" height="10%"></canvas>
-                            </div> 
-                        </div>
-
-                    </div>
-                </div>
-           
-                <div class="col-12">
-                    <!-- TABLE -->
-                    <div class="box">
-                        <div class="box-body overflow-scroll">
-                            <div>
-                                <h3>ข้อมูลสถิติการเก็บขยะแต่ละประเภท</h3>
-                            </div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>ลำดับที่</th>
-                                        <th>รถประเภท</th>
-                                        <th>น้ำหนักขยะ(กิโลกรัม)</th>
-                                        <th>วันที่</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% for( let index=0; index < result.length; index++ ) { %>
-                                        <tr>
-                                            <td>
-                                                <%= index+1 %>
-                                            </td>
-                                            <td>
-                                                <%= result[index].type %>
-                                            </td>
-                                            <td>
-                                                <%= result[index]["SUM(a.weight)"] %>
-                                            </td>
-                                            <td>
-                                                <%= result[index].date %>
-                                            </td>
-                                        </tr>
-                                        <% } %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- END TABLE -->
-                </div>
-
-
-            </div>
+        <div class="sidebar-user">
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Garbage-Truck [ADMIN]</div>
+          </div>
+          <button class="btn btn-outline">
+            <i
+              class="bx bx-log-out bx-rotate-180"
+              style="color: #ffffff"
+              onclick="window.location.replace('/auth/logout')"
+            ></i>
+          </button>
         </div>
-        <!-- END MAIN CONTENT-->
+      </div>
+      <!-- SIDEBAR MENU -->
+      <ul class="sidebar-menu">
+        <li>
+          <a href="/newadminse">
+            <i class="bx bxs-contact"></i>
+            <span>จัดการข้อมูลคนขับรถ</span>
+          </a>
+        </li>
+        <li>
+          <a href="/newcars">
+            <i class="bx bxs-car"></i>
+            <span>จัดการข้อมูลรถ</span>
+          </a>
+        </li>
+        <!-- DROPDOWN -->
+        <li class="sidebar-submenu">
+          <a href="#" class="sidebar-menu-dropdown">
+            <i class="bx bx-line-chart"></i>
+            <span>ดูกราฟ</span>
+            <div class="dropdown-icon"></div>
+          </a>
+          <ul class="sidebar-menu sidebar-menu-dropdown-content">
+            <li>
+              <a href="/newcarmatch"> จับคู่รถ </a>
+              <a href="/showweigh"> รายงานสถิติการเก็บขยะ </a>
+            </li>
+          </ul>
+        </li>
+        <li class="sidebar-submenu">
+          <a href="#" class="sidebar-menu-dropdown">
+            <i class="bx bxs-wrench"></i>
+            <span>ตั้งค่า</span>
+            <div class="dropdown-icon"></div>
+          </a>
+          <ul class="sidebar-menu sidebar-menu-dropdown-content">
+            <li>
+              <a href="#" class="darkmode-toggle" id="darkmode-toggle">
+                <span>darkmode</span>
+                <span class="darkmode-switch"></span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- END SIDEBAR MENU-->
+    </div>
+    <!-- END SIDEBAR -->
 
-        <!-- SCRIPT -->
-        <script src="/scripts/js/statisticweigh.js"></script>
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSaaROLQQlFY4xMlTf9plC925bsdnbDGg&callback=initMap&libraries=visualization&v=weekly" async></script> -->
-        <!-- APEX CHART -->
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        <!--- APP JS -->
-        <script src="/scripts/js/dropdown.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <!-- MAIN CONTENT -->
+    <div class="main">
+      <div class="main-header">
+        <div class="mobile-toggle" id="mobile-toggle">
+          <i class="bx bx-menu-alt-left"></i>
+        </div>
+        <div class="main-tittle">
+          <h1>ข้อมูลสถิติขยะ</h1>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="col-12 col-md-12 col-sm-12">
+          <div class="counter">
+            <div class="card" style="background-color: #969e9f">
+              <div class="card-body">
+                <canvas id="line-chart" width="30%" height="10%"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="box">
+            <div class="box-header">
+              <h4 class="box-title text-primary">
+                รายงานสถิติการเก็บขยะ<br />
+              </h4>
+            </div>
+            <div class="box-body">
+              <div class="table-responsive">
+                <table
+                  id="getDataToDatatable"
+                  class="table table-bordered display"
+                  style="width: 100%"
+                >
+                  <thead>
+                    <tr>
+                      <th>ลำดับที่</th>
+                      <th>รถประเภท</th>
+                      <th>น้ำหนักขยะ(กิโลกรัม)</th>
+                      <th>วันที่</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TABLE -->
         
-    </body>
+          <!-- END TABLE -->
+        </div>
+      </div>
+    </div>
+    <!-- END MAIN CONTENT-->
 
+    <!-- SCRIPT -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="/scripts/js/statisticweigh.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSaaROLQQlFY4xMlTf9plC925bsdnbDGg&callback=initMap&libraries=visualization&v=weekly" async></script> -->
+    <!-- APEX CHART -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!--- APP JS -->
+    <script src="/scripts/js/dropdown.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        getDataToDatatable();
+      });
+
+      function getDataToDatatable() {
+
+        $("#getDataToDatatable").DataTable({
+          ajax: {
+            type: "GET",
+            url: "/weight",
+            dataSrc: "",
+          },
+          columns: [
+            {
+              data: "weigh_id",
+              sortable: false,
+              render: function (data, type, row, meta) {
+                return meta.row + 1;
+              }
+            },
+            {
+              data: "type",
+              sortable: false,
+            },
+            {
+              data: "weigh_id",
+              sortable: false,
+              render: function (data, type, row, meta) {
+                return row['SUM(a.weight)'];
+              }
+            },
+            {
+              data: "date",
+              sortable: false,
+              render: function(data) {
+                moment.locale('th'); 
+                return moment(data).format('LLLL');
+              }
+            },
+          ],
+          order: [[0, "desc"]],
+        });
+      }
+    </script>
+  </body>
 </html>
