@@ -3,7 +3,7 @@ let config = {
   user: 'root',
   password: '',
   database: 'publictransport',
-  //port: 3307, //สำหรับ server
+  //port: 3307 //สำหรับ server
 }
 
 module.exports = config

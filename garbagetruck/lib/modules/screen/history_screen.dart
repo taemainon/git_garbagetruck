@@ -166,6 +166,7 @@ class _historyScreenState extends State<historyScreen> {
       http.Response response =
           await http.post(Uri.parse('http://10.0.2.2:35000/hist'), body: {
         // await http.post(Uri.parse('http://pytransit.szo.me/hist'), body: {
+        // await http.post(Uri.parse('http://54.251.137.175:35000/hist'), body: {
         'driver_id': id,
       }).timeout(Duration(seconds: 4));
       data = jsonDecode(response.body);

@@ -46,6 +46,7 @@ class _loginState extends State<login> {
   var _count;
   // final _url = Uri.parse('http://pytransit.szo.me/loginmoblie');
   final _url = Uri.parse('http://10.0.2.2:35000/loginmoblie');
+  //final _url = Uri.parse('http://54.251.137.175:35000/loginmoblie');
   final TextEditingController _getUsername = TextEditingController();
   final TextEditingController _getPassword = TextEditingController();
 

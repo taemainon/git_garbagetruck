@@ -45,7 +45,9 @@ class MapView extends StatefulWidget {
 class _MapViewState extends State<MapView> {
   /*ประกาศตัวแปร*/
   // final _url = Uri.parse('http://pytransit.szo.me/addlocation');
+  //final _url = Uri.parse('http://10.0.2.2:35000/addlocation');
   final _url = Uri.parse('http://10.0.2.2:35000/addlocation');
+
   late String _name = '';
   late String _email = '';
   late String driverid = '';

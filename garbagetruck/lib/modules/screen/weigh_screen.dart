@@ -231,7 +231,10 @@ class _WeighScreenState extends State<WeighScreen> {
     var headers = {'Content-Type': 'application/x-www-form-urlencoded'};
     var request =
         http.Request('POST', Uri.parse('http://10.0.2.2:35000/save-weight'));
-    request.bodyFields = {'weight': weight.toString(), 'car_id': car_id.toString()};
+    request.bodyFields = {
+      'weight': weight.toString(),
+      'car_id': car_id.toString()
+    };
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
