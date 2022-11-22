@@ -106,16 +106,26 @@ class _WeighScreenState extends State<WeighScreen> {
             //mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text('$int_count',
-                  style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.w600,
-                      //backgroundColor: Color.fromARGB(255, 229, 229, 156)
-                      background: Paint()
-                        ..strokeWidth = 40.0
-                        ..color = Color.fromARGB(255, 220, 228, 144)
-                        ..style = PaintingStyle.stroke
-                        ..strokeJoin = StrokeJoin.round)),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('$int_count',
+                      style: TextStyle(
+                          fontSize: 50,
+                          fontWeight: FontWeight.w600,
+                          //backgroundColor: Color.fromARGB(255, 229, 229, 156)
+                          background: Paint()
+                            ..strokeWidth = 10.0
+                            ..color = Color.fromARGB(255, 240, 255, 107)
+                            ..style = PaintingStyle.stroke
+                            ..strokeJoin = StrokeJoin.round)),
+                  Text('กิโลกรัม',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300,
+                      ))
+                ],
+              ),
               SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

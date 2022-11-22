@@ -67,11 +67,14 @@ class _MapViewState extends State<MapView> {
   final destinationAddressController = TextEditingController();
   final startAddressFocusNode = FocusNode();
   final desrinationAddressFocusNode = FocusNode();
-  double _originLatitude = 19.0285386, _originLongitude = 99.9280334;
-  double _destLatitude = 19.0275033, _destLongitude = 99.922485;
-  double _onwaylat = 19.0281170, _onwaylng = 99.9280268;
-  double _originLatitude1 = 19.0280917, _originLongitude1 = 99.9280152;
-  double _destLatitude1 = 19.0280988, _destLongitude1 = 99.9280153;
+  double _originLatitude = 18.812643552168534,
+      _originLongitude = 98.9634971726769;
+  double _destLatitude = 18.80739298292453, _destLongitude = 98.96275688295454;
+  double _onwaylat = 18.80250787676687, _onwaylng = 98.96731663819125;
+  double _originLatitude1 = 18.80716955079214,
+      _originLongitude1 = 98.97095371365731;
+  double _destLatitude1 = 18.811556890783976,
+      _destLongitude1 = 98.96801401258992;
 
   PolylinePoints polylinePoints = PolylinePoints();
   Map<PolylineId, Polyline> polylines = {};
@@ -248,7 +251,7 @@ class _MapViewState extends State<MapView> {
     return Container(
       child: GoogleMap(
         initialCameraPosition: CameraPosition(
-          target: LatLng(19.0308, 99.9265),
+          target: LatLng(18.811577202276563, 98.96793891073872),
           zoom: 15,
         ),
         myLocationEnabled: true,

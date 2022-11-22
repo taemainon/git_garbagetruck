@@ -358,7 +358,7 @@ function initMap() {
     directionsRenderer.setMap(map)
     calculateAndDisplayRoute(directionsService, directionsRenderer)
     var greeen = '/image/carGreen.png'
-    var yelow = '/image/carYelow.png'
+    var yellow = '/image/carYelow.png'
     var blue = '/image/carBlue.png'
     var red = '/image/carRed.png'
         // beachMarker = new google.maps.Marker({
@@ -418,7 +418,7 @@ function initMap() {
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(latNew, lngNew),
                 map: map,
-                icon: yelow,
+                icon: yellow,
             })
         } else {
             var marker = new google.maps.Marker({
